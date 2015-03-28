@@ -9,5 +9,5 @@ echo 'copying...'
 for f in dot.*
 do
 	echo $f
-	echo ${f//^dot/.}
+	echo ${f//dot/DOTTTT}
 done
