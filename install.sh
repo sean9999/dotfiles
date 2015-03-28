@@ -9,7 +9,7 @@ echo 'copying...'
 for f in dot.*
 do
 	echo ${f//dot\./.}
-	mv $f ~/weird/${f//dot\./.}
+	mv $f ~/${f//dot\./.}
 done
 source ~/.bash_profile
 echo 'done.'
