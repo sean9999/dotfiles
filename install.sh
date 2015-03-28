@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget https://github.com/sean9999/dotfiles/archive/master.zip
+wget -q https://github.com/sean9999/dotfiles/archive/master.zip
 unzip master
 cd dotfiles-master/home
 for f in dot.*
