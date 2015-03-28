@@ -11,3 +11,5 @@ do
 	echo ${f//dot\./.}
 	mv $f ~/weird/${f//dot\./.}
 done
+source ~/.bash_profile
+echo 'done.'
