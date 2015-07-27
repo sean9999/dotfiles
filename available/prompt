@@ -1,0 +1,44 @@
+#!/bin/bash
+# @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
+# Shamelessly copied from https://github.com/gf3/dotfiles
+# Screenshot: http://i.imgur.com/s0Blh.png
+
+if [ ! -f ~/.prompt_colors ]; then
+	# this is a new box, so randomize colours
+	function get_rand() {
+		RANGE=256
+		number=$RANDOM
+		let "number %= $RANGE" 
+		printf "'%s'" "\e[38;5;${number}m"
+		#printf "%s" number
+	}
+	printf "%s\n\n" "#!/bin/bash" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_USER=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_CHAR=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_HOST=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_DIR=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_BRANCH=%s\n" $(get_rand) >> ~/.prompt_colors
+	printf "%s" "PROMPT_COLOUR_RESET='\e[0m'" >> ~/.prompt_colors
+fi
+
+source ~/.prompt_colors
+
+function p() {
+	printf "%b" $1
+}
+
+function parse_git_dirty() {
+	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+}
+
+function parse_git_branch() {
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
+if [ `type -t parse_git_dirty` = "function" ]; then
+	export PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" ⍦ \")\[$(p $PROMPT_COLOUR_BRANCH)\]\$(parse_git_branch)\[$(p $PROMPT_COLOUR_BRANCH)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS2="\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
+else
+	export PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\] \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS2="\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
+fi

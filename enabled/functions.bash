@@ -1,1 +1,0 @@
-/Users/seanmacdonald/.dotfiles/available/functions.bash

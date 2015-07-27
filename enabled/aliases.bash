@@ -1,1 +1,0 @@
-/Users/seanmacdonald/.dotfiles/available/aliases.bash
