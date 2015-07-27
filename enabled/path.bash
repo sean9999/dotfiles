@@ -1,0 +1,1 @@
+/Users/seanmacdonald/.dotfiles/available/path.bash
