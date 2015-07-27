@@ -1,19 +1,20 @@
 "use strict";
 var fs = require('fs');
 module.exports = function(fyle,x){
-	var source = x.rootdir + '/enabled/' + fyle;
-	var destination = x.rootdir + '/available/' + fyle;
-	
-	fs.symlink(source,destination,function(a,b,c){
-		console.log();
-	});
-
-	fs.exists(symlink,function(exists){
+	var rootdir = x.rootdir.replace('~',process.env.HOME);
+	var linkname = rootdir + '/enabled/' + fyle;
+	var target = rootdir + '/available/' + fyle;
+	fs.exists(target,function(exists){
 		if (exists) {
-			console.log(fyle + ' is already enabled');
+			fs.symlink(target,linkname,function(err,ok){
+				if (err) {
+					console.error(err.code);
+				} else {
+					console.log('dotfile succesfully enabled');
+				}
+			});			
 		} else {
-			//	let's go!
-			console.log(fyle + ' was not found');
+			console.error('dotfile does not exist');
 		}
 	});
 };
