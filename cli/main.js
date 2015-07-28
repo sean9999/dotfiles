@@ -2,22 +2,50 @@
 "use strict";
 
 var fs = require('fs'),
-	onlyJavascript = function(filename){
-		return /\.js$/.test(filename);
-	},
-	toModulePairs = function(filename){
-		return {
-			path: "./"+filename,
-			modulename: filename.replace(/\.js$/,'')
-		};
-	},
+	colour = require('bash-color'),
+	CLIError = require('./error.js'),
+	playsound = require('./playsound.js'),
 	vars = require('./vars.js'),
-	cli = {},
 	submodulename = process.argv[2] || "help",
-	submodule = require('./'+submodulename+'.js');
+	submodule = function(){},
+	submoduleargs = {
+		object: process.argv[3] || ""
+	},
+	legal_submodule_names=[];
 
-switch (submodulename) {
-	default:
-	submodule(process.argv[3],vars);
-	break;
+fs.readdir( __dirname + '/lib',function(err,files){
+	if (err) {
+		throw new CLIError(err);
+	}
+	legal_submodule_names = files.map(function(fylename){
+		return fylename.replace(/\.js$/,'');
+	});
+	if (legal_submodule_names.indexOf(submodulename) > -1) {
+		submodule = require('./lib/'+submodulename+'.js');
+	} else {
+		vars.error = new Error('Submodule ' + submodulename + ' does not exist');
+		submodule = require('./lib/help.js');
+	}
+	main();
+});
+
+function main(){
+	switch (submodulename) {
+		case 'some-illegal-submodule-name':
+		vars.error = new Error('Submodule exists but cannot be legally invoked');
+		default:
+		try {
+			submodule(submodulename,submoduleargs,vars);
+			if ("error" in vars && vars.error) {
+				throw vars.error;
+			}
+		} catch (err) {
+			try {
+				throw new CLIError(err);
+			} catch (clierror) {
+				console.error(clierror.message);
+			}
+		}
+		break;
+	}
 }

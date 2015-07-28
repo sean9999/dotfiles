@@ -10,4 +10,4 @@ vars.get = function(k){
 vars.set = function(k,v){
 	vars[k] = v;
 };
-module.export = vars;
+module.exports = vars;

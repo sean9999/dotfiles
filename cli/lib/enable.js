@@ -1,6 +1,9 @@
 "use strict";
 var fs = require('fs');
-module.exports = function(fyle,x){
+module.exports = function(submodulename,fyle,x){
+	if (typeof fyle !== 'string' || fyle.length === 0) {
+		throw new Error('cannot enable this illegal thing');
+	}
 	var rootdir = x.rootdir.replace('~',process.env.HOME);
 	var linkname = rootdir + '/enabled/' + fyle;
 	var target = rootdir + '/available/' + fyle;

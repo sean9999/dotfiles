@@ -1,3 +1,4 @@
 {
-	"rootdir": "~/.dotfiles"
+	"rootdir": "~/.dotfiles",
+	"ignorefiles": [".DS_Store","Caveats"]
 }

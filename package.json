@@ -1,11 +1,6 @@
 {
   "name": "dotfiles",
   "version": "1.0.0",
-  "description": "a tool to help you manage your dotfiles",
-  "main": "cli.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "description": "a dotfile manager",
   "main": "cli.js",
   "scripts": {
@@ -31,6 +26,7 @@
   },
   "homepage": "https://github.com/sean9999/dotfiles#readme",
   "dependencies": {
+    "bash-color": "0.0.3",
     "npm": "^2.13.2"
   }
 }

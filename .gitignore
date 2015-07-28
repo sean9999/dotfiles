@@ -4,3 +4,5 @@ node_modules
 enabled/
 *.sublime-*
 home/credentialhelper
+.DS_Store
+*.log
