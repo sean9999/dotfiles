@@ -4,3 +4,4 @@ node_modules
 enabled/
 *.sublime-*
 home/credentialhelper
+npm-debug.log
