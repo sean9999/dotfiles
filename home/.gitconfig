@@ -92,9 +92,11 @@
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
 [push]
-	default = simple	
+	default = simple
 [log]
 	decorate = full
 [branch]
 	autosetupmerge = always
 	autosetuprebase = local
+[credential]
+	helper = osxkeychain

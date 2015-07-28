@@ -22,6 +22,8 @@ if [ -d ~/.dotfiles ]; then
 		fi
 	done
 	#	delete broken symlinks
+	#	@TODO fix this warning
+	#	find: warning: you have specified the -maxdepth option after a non-option argument -type, but options are not positional (-maxdepth affects tests specified before it as well as those specified after it).  Please specify options before other arguments.
 	find ~ -type l -maxdepth 1 ! -exec test -r {} \; -delete
 fi
 unset file
