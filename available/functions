@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Simple calculator
 function calc() {
 	local result=""
@@ -266,7 +268,9 @@ function m() {
 # opens the given location
 function s() {
 	if [ $# -eq 0 ]; then
-		subl .
+		openthis="$(find . -maxdepth 1 -name '*.sublime-project' -print -quit)"
+		openthis=${openthis:-.}
+		subl $openthis
 	else
 		subl "$@"
 	fi
