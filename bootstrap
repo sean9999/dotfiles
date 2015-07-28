@@ -16,7 +16,10 @@ if [ -d ~/.dotfiles ]; then
 			else
 				echo "linking $localfile to to $dotfile"
 				mkdir -p ~/.dotfiles/$archivedir
-				mv $localfile $archivefile
+				if [ -r $localfile ]; then
+					echo "archiving $localfile to to $archivefile"
+					mv $localfile $archivefile
+				fi
 				ln -s $dotfile $localfile
 			fi
 		fi
