@@ -3,3 +3,4 @@ archive/
 node_modules
 enabled/
 *.sublime-*
+home/credentialhelper
