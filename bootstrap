@@ -1,0 +1,32 @@
+#!/bin/bash
+cd ~/.dotfiles
+if [ -d ~/.dotfiles ]; then
+	#	set up the shell environment
+	for file in ~/.dotfiles/enabled/*; do
+		[ -r "$file" ] && source "$file"
+	done
+	#	home dir files
+	for dotfile in `find ~/.dotfiles/home -type f`; do
+		if [ -r "$dotfile" ]; then
+			localfile=${dotfile/\/\.dotfiles\/home}
+			archivedir=archive/`git rev-parse HEAD`/home
+			archivefile=${dotfile/\/home\//\/$archivedir\/}
+			if [ -h "$localfile" ] && [ `readlink $localfile` == "$dotfile" ]; then
+				x=5
+			else
+				echo "linking $localfile to to $dotfile"
+				mkdir -p ~/.dotfiles/$archivedir
+				mv $localfile $archivefile
+				ln -s $dotfile $localfile
+			fi
+		fi
+	done
+	#	delete broken symlinks
+	find ~ -type l -maxdepth 1 ! -exec test -r {} \; -delete
+fi
+unset file
+unset dotfile
+unset localfile
+unset archivefile
+unset archivedir
+unset x

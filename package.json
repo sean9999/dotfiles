@@ -1,0 +1,36 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "a tool to help you manage your dotfiles",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "description": "a dotfile manager",
+  "main": "cli.js",
+  "scripts": {
+    "test": "grunt test cli/test"
+  },
+  "bin": {
+    "dotfiles": "cli/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sean9999/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles",
+    "bash",
+    "shell",
+    "utility"
+  ],
+  "author": "Sean Macdonald <sean@crazyhorsecoding.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sean9999/dotfiles/issues"
+  },
+  "homepage": "https://github.com/sean9999/dotfiles#readme",
+  "dependencies": {
+    "npm": "^2.13.2"
+  }
+}
