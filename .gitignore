@@ -4,5 +4,9 @@ node_modules
 enabled/
 *.sublime-*
 home/credentialhelper
+<<<<<<< HEAD
 .DS_Store
 *.log
+=======
+npm-debug.log
+>>>>>>> d4fcace55fa37f2001bf88924bba5c4d169b0367
