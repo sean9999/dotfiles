@@ -12,7 +12,7 @@ const CLIP_ROOT = __dirname + '/assets/';
 var playsound = function(clipname){
 	var clip_path = CLIP_ROOT + clipname + '.mp3';
 	var command = '/usr/bin/env';
-	var args = ['play','-q',clip_path];
+	var args = ['play','-q','-v','0.2',clip_path];
 	var options = {
 		stdio: ['ignore','ignore','ignore'],
 		detached: true

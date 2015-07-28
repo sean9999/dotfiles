@@ -23,6 +23,13 @@ module.exports = function(submodulename,submoduleargs,vars){
 					console.log( colour.purple(item) );
 				}
 			});
+			console.log('#	symlinked home files');
+			fs.readdir(exanded_root+'/home',function(err,homefiles){
+				if (err) throw err;
+				homefiles.forEach(function(f){
+					console.log(f);
+				});
+			});			
 		});
 	});
 };

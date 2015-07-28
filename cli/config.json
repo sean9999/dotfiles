@@ -1,4 +1,8 @@
 {
 	"rootdir": "~/.dotfiles",
-	"ignorefiles": [".DS_Store","Caveats"]
+	"ignorefiles": [".DS_Store","Caveats"],
+	"char": {
+		"good": "✅",
+		"bad": "❌"
+	}
 }
