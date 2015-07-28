@@ -1,43 +1,23 @@
 #!/usr/bin/env node
 "use strict";
 
-var enable = require('./enable.js'),
-	x = require('./config.json');
-
-
-
-/*
-var fs    = require('fs'),
-  nconf = require('nconf');
-
-nconf.argv([
-	{
-		"ls": {
-			alias: "list",
-			describe: "list them"
-		}
+var fs = require('fs'),
+	onlyJavascript = function(filename){
+		return /\.js$/.test(filename);
 	},
-	{
-		"edit": {
-			alias: "ed",
-			"describe": "edit a dotfile"
-		}
+	toModulePairs = function(filename){
+		return {
+			path: "./"+filename,
+			modulename: filename.replace(/\.js$/,'')
+		};
 	},
-	{
-		"enable": {
-			describe: "enable a dotfile"
-		}
-	},
-	{
-		"disable": {
-			"describe": "disable a dotfile"
-		}
-	}
-]);
-*/
+	vars = require('./vars.js'),
+	cli = {},
+	submodulename = process.argv[2] || "help",
+	submodule = require('./'+submodulename+'.js');
 
-switch (process.argv[2]) {
-	case 'enable':
-	enable(process.argv[3],x);
+switch (submodulename) {
+	default:
+	submodule(process.argv[3],vars);
 	break;
 }

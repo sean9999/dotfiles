@@ -1,15 +1,12 @@
 #!/bin/bash
 
-echo 'downloading...'
-wget -qq https://github.com/sean9999/dotfiles/archive/master.zip
-echo 'unpacking...'
-unzip -qq master
-cd dotfiles-master/home
-echo 'copying...'
-for f in dot.*
-do
-	echo ${f//dot\./.}
-	mv $f ~/${f//dot\./.}
-done
-source ~/.bash_profile
+INSTALL_DIR=~/0dotfilesXX
+cd ~
+echo "installing into $INSTALL_DIR"
+mkdir -p $INSTALL_DIR
+echo "cloning"
+git clone --recursive https://github.com/sean9999/dotfiles.git $INSTALL_DIR
+git status
+cd $INSTALL_DIR
+npm install
 echo 'done.'

@@ -1,7 +1,3 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --harmony 
 
-"use strict";
-
-var echo = console.log;
-
-echo('hello. i am dotfiles cli');
+module.exports = require('./cli/main.js');
