@@ -1,12 +1,9 @@
 archive/
-.private
-node_modules
 enabled/
-*.sublime-*
-home/credentialhelper
-<<<<<<< HEAD
+.private
+home/.gituser
+home/.gitcredentialhelper
+node_modules
 .DS_Store
 *.log
-=======
-npm-debug.log
->>>>>>> d4fcace55fa37f2001bf88924bba5c4d169b0367
+*.sublime-*

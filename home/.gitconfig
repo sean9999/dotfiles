@@ -1,8 +1,6 @@
-[user]
-	email = sean@crazyhorsecoding.com
-	name = Sean Macdonald
 [include]
-	path = credentialhelper
+	path = ~/.gituser
+	path = ~/.gitcredentialhelper
 [alias]
 	# View the current working tree status using the short format
 	s = status

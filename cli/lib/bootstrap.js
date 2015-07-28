@@ -18,7 +18,7 @@ var bootstrap = function(submodulename,fyle,vars){
 			console.log('bootstrap process exited with code ' + code);
 		} else {
 			console.log( colour.green(vars.char.good'  bootstrapping complete. reload shell to see changes') );
-			playsound('good');		
+			playsound('good');
 		}
 	});
 };
