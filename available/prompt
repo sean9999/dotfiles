@@ -1,43 +1,32 @@
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM=gnome-256color
-elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM=xterm-256color
+#!/bin/bash
+
+# @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
+# Shamelessly copied from https://github.com/gf3/dotfiles
+# Screenshot: http://i.imgur.com/s0Blh.png
+
+if [ ! -f ~/.prompt_colors ]; then
+	# this is a new box, so randomize colours
+	function get_rand() {
+		RANGE=256
+		number=$RANDOM
+		let "number %= $RANGE" 
+		printf "'%s'" "\e[38;5;${number}m"
+		#printf "%s" number
+	}
+	printf "%s\n\n" "#!/bin/bash" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_USER=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_CHAR=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_HOST=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_DIR=%s\n" "$(get_rand)" >> ~/.prompt_colors
+	printf "PROMPT_COLOUR_BRANCH=%s\n" $(get_rand) >> ~/.prompt_colors
+	printf "%s" "PROMPT_COLOUR_RESET='\e[0m'" >> ~/.prompt_colors
 fi
 
-if tput setaf 1 &> /dev/null; then
-	tput sgr0
-	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-		MAGENTA=$(tput setaf 9)
-		ORANGE=$(tput setaf 172)
-		GREEN=$(tput setaf 190)
-		PURPLE=$(tput setaf 141)
-		WHITE=$(tput setaf 0)
-	else
-		MAGENTA=$(tput setaf 5)
-		ORANGE=$(tput setaf 4)
-		GREEN=$(tput setaf 2)
-		PURPLE=$(tput setaf 1)
-		WHITE=$(tput setaf 7)
-	fi
-	BOLD=$(tput bold)
-	RESET=$(tput sgr0)
-else
-	MAGENTA="\033[1;31m"
-	ORANGE="\033[1;33m"
-	GREEN="\033[1;32m"
-	PURPLE="\033[1;35m"
-	WHITE="\033[1;37m"
-	BOLD=""
-	RESET="\033[m"
-fi
+source ~/.prompt_colors
 
-export MAGENTA
-export ORANGE
-export GREEN
-export PURPLE
-export WHITE
-export BOLD
-export RESET
+function p() {
+	printf "%b" $1
+}
 
 function parse_git_dirty() {
 	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
@@ -48,9 +37,9 @@ function parse_git_branch() {
 }
 
 if [ `type -t parse_git_dirty` = "function" ]; then
-	export PS1="\[${BOLD}${WHITE}\]\u \[$PURPLE\]@ \[$ORANGE\]\h \[$WHITE\]∈ \[$MAGENTA\]\w\[$PURPLE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" ⍦ \")\[$WHITE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
-	export PS2="\[$ORANGE\]→ \[$RESET\]"
+	export PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" ⍦ \")\[$(p $PROMPT_COLOUR_BRANCH)\]\$(parse_git_branch)\[$(p $PROMPT_COLOUR_BRANCH)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS2="\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
 else
-	export PS1="\[${BOLD}${WHITE}\]\u \[$PURPLE\]@ \[$ORANGE\]\h \[$WHITE\]∈ \[$MAGENTA\]\w\[$PURPLE\]\n\$ \[$RESET\]"
-	export PS2="\[$ORANGE\]→ \[$RESET\]"
+	export PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\] \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS2="\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
 fi
