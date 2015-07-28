@@ -98,5 +98,3 @@
 [branch]
 	autosetupmerge = always
 	autosetuprebase = local
-[credential]
-	helper = osxkeychain
