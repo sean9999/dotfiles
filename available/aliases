@@ -1,4 +1,8 @@
+#!/bin/bash
+
 alias ll='ls -alFG'
 alias la='ls -AG'
-alias l='ls -CFG'
+alias l='ls -GF'
 alias b2d='if [ $(boot2docker status) != "running" ]; then boot2docker up; fi; eval "$(boot2docker shellinit)"'
+alias g='git'
+alias d='docker'

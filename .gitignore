@@ -1,0 +1,9 @@
+archive/
+enabled/
+.private
+home/.gituser
+home/.gitcredentialhelper
+node_modules
+.DS_Store
+*.log
+*.sublime-*

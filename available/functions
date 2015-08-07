@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Simple calculator
 function calc() {
 	local result=""
@@ -266,7 +268,9 @@ function m() {
 # opens the given location
 function s() {
 	if [ $# -eq 0 ]; then
-		subl .
+		openthis="$(find . -maxdepth 1 -name '*.sublime-project' -print -quit)"
+		openthis=${openthis:-.}
+		subl $openthis
 	else
 		subl "$@"
 	fi
@@ -319,14 +323,49 @@ function ap() {
 }
 function update(){
 	cd $HOME;
-	softwareupdate -i;
+	sudo chown -R $USER $HOME
+	softwareupdate -ia;
 	sudo npm install npm@latest -g;
+<<<<<<< HEAD
 	brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup;
 	tlmgr update --self --all;
 	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U;
 	sudo -H gem update `gem list | cut -d ' ' -f 1`;
+=======
+	brew update
+	brew upgrade --all
+	npm install npm@latest -g
+	npm update -g
+	tlmgr update --self --all;
+	sudo -H pip3 install --upgrade pip setuptools
+	sudo -H pip install --upgrade pip
+	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U
+	sudo gem update `gem list | cut -d ' ' -f 1`;
+>>>>>>> 366ff6779e8fae0fc2bab3baafb8f0aefad68956
 	boot2docker down && boot2docker upgrade;
-	sudo n latest;
+	n io latest;
+	n latest;
 	sudo composer self-update;
 	ngrok update
+}
+
+function docker-clean(){
+	docker rm $(docker ps -a -q)
+	docker rmi $(docker images -q -f dangling=true)
+}
+
+untagged_containers() {
+	# Print containers using untagged images: $1 is used with awk's print: 0=line, 1=column 1.
+	# NOTE: "[0-9a-f]{12}" does not work with GNU Awk 3.1.7 (RHEL6).
+	#       Ref: https://github.com/blueyed/dotfiles/commit/a14f0b4b#commitcomment-6736470
+	docker ps -a | tail -n +2 | awk '$2 ~ "^[0-9a-f]+$" {print $'$1'}'
+}
+
+untagged_images() {
+	# Print untagged images: $1 is used with awk's print: 0=line, 3=column 3.
+	# NOTE: intermediate images (via -a) seem to only cause
+	# "Error: Conflict, foobarid wasn't deleted" messages.
+	# Might be useful sometimes when Docker messed things up?!
+	# docker images -a | awk '$1 == "<none>" {print $'$1'}'
+	docker images | tail -n +2 | awk '$1 == "<none>" {print $'$1'}'
 }

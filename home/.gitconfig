@@ -1,3 +1,6 @@
+[include]
+	path = ~/.gituser
+	path = ~/.gitcredentialhelper
 [alias]
 	# View the current working tree status using the short format
 	s = status
@@ -38,7 +41,6 @@
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
-
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
@@ -54,7 +56,6 @@
 	trustctime = false
 	fileMode = false
 	filemode = false
-
 [color]
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
@@ -75,7 +76,6 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
-
 # URL shorthands
 [url "git@github.com:"]
 	insteadOf = "gh:"
@@ -89,19 +89,13 @@
 	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
-
 [push]
 	default = simple
-[user]
-	email = stuff@crazyhorsecoding.com
-	name = Sean Macdonald
-[credential]
-	helper = osxkeychain
-[github]
-	user = sean9999
-	token = 03647fc072ace222cc4730b60c2b948424318752
 [log]
 	decorate = full
 [branch]
 	autosetupmerge = always
 	autosetuprebase = local
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
