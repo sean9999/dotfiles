@@ -321,11 +321,12 @@ function update(){
 	cd $HOME;
 	softwareupdate -i;
 	sudo npm install npm@latest -g;
-	brew up;
+	brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup;
 	tlmgr update --self --all;
-	sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U;
-	sudo gem update `gem list | cut -d ' ' -f 1`;
+	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U;
+	sudo -H gem update `gem list | cut -d ' ' -f 1`;
 	boot2docker down && boot2docker upgrade;
 	sudo n latest;
 	sudo composer self-update;
+	ngrok update
 }
