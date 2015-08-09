@@ -1,3 +1,3 @@
 #!/bin/bash
 #	node harmony
-"$(n 0.12.7) --harmony $1"
+eval "$(n 0.12.7)--harmony $1"
