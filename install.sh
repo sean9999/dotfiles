@@ -12,8 +12,7 @@ cd $INSTALL_DIR
 git status
 npm install
 if [ "$(which node)" == "" ] && [ "$(which nodejs)" != "" ]; then
-	sudo -v
-	sudo -H "$(which nodejs)"  `dirname $(which nodejs)`/node
+	sudo -H ln -s "$(which nodejs)"  `dirname $(which nodejs)`/node
 	sudo -H npm link
 else
 	npm link
