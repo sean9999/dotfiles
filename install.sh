@@ -11,7 +11,7 @@ git clone https://github.com/sean9999/dotfiles.git $INSTALL_DIR
 cd $INSTALL_DIR
 git status
 npm install
-npm link
+npm link || sudo -Hn npm link
 
 #if [ "$(which node)" == "" ] && [ "$(which nodejs)" != "" ]; then
 #	sudo -Hn ln -s "$(which nodejs)"  `dirname $(which nodejs)`/node
