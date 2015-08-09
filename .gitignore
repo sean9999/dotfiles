@@ -1,6 +1,7 @@
 archive/
 enabled/
-.private
+private
+*.private.*
 home/.gituser
 home/.gitcredentialhelper
 node_modules

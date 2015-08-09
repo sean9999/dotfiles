@@ -10,5 +10,3 @@ these are my dotfiles, and also a way to manage them. You should fork it. It's n
 
 ## quick install (requires curl)
 > curl https://raw.githubusercontent.com/sean9999/dotfiles/master/install.sh | bash
-
-## non quick install
