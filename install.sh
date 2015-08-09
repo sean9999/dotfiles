@@ -11,7 +11,7 @@ git clone https://github.com/sean9999/dotfiles.git $INSTALL_DIR
 cd $INSTALL_DIR
 
 #	node --harmony
-sudo -Hn mv nodeES6 /usr/local/bin/
+sudo -Hn cp nodeES6 /usr/local/bin/
 sudo -Hn chmod +x /usr/local/bin/nodeES6
 sudo -Hn npm install --global n
 sudo -Hn n 0.12.7
