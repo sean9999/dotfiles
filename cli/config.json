@@ -1,8 +1,22 @@
 {
 	"rootdir": "~/.dotfiles",
+	"helpRoot": "/cli/assets",
 	"ignorefiles": [".DS_Store","Caveats"],
-	"char": {
-		"good": "✅",
-		"bad": "❌"
+	"message": {
+		"error": {
+			"char": "❗",
+			"colour": "red",
+			"sound": "bad.mp3"
+		},
+		"success": {
+			"char": "✅",
+			"colour": "green",
+			"sound": "good.mp3"
+		},
+		"default": {
+			"char": "◱",
+			"colour": false,
+			"sound": "neutral.mp3"
+		}
 	}
 }

@@ -1,33 +1,5 @@
 #!/bin/bash
 
-# Simple calculator
-function calc() {
-	local result=""
-	result="$(printf "scale=10;$*\n" | bc --mathlib | tr -d '\\\n')"
-	#                       └─ default (when `--mathlib` is used) is 20
-	#
-	if [[ "$result" == *.* ]]; then
-		# improve the output for decimal numbers
-		printf "$result" |
-		sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
-			-e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
-			-e 's/0*$//;s/\.$//'   # remove trailing zeros
-	else
-		printf "$result"
-	fi
-	printf "\n"
-}
-
-# Create a new directory and enter it
-function mkd() {
-	mkdir -p "$@" && cd "$@"
-}
-
-# Change working directory to the top-most Finder window location
-function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
-}
-
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar"
@@ -97,21 +69,12 @@ function gitio() {
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
-function server() {
+function staticserver() {
 	local port="${1:-8000}"
 	sleep 1 && open "http://localhost:${port}/" &
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
-}
-
-# Start a PHP server from a directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-function phpserver() {
-	local port="${1:-4000}"
-	local ip=$(ipconfig getifaddr en1)
-	sleep 1 && open "http://${ip}:${port}/" &
-	php -S "${ip}:${port}"
 }
 
 # Compare original and gzipped file size
@@ -247,23 +210,6 @@ function unquarantine() {
 	done
 }
 
-# Install Grunt plugins and add them as `devDependencies` to `package.json`
-# Usage: `gi contrib-watch contrib-uglify zopfli`
-function gi() {
-	local IFS=,
-	eval npm install --save-dev grunt-{"$*"}
-}
-
-# `m` with no arguments opens the current directory in TextMate, otherwise
-# opens the given location
-function m() {
-	if [ $# -eq 0 ]; then
-		mate .
-	else
-		mate "$@"
-	fi
-}
-
 # `s` with no arguments opens the current directory in Sublime Text, otherwise
 # opens the given location
 function s() {
@@ -273,26 +219,6 @@ function s() {
 		subl $openthis
 	else
 		subl "$@"
-	fi
-}
-
-# `v` with no arguments opens the current directory in Vim, otherwise opens the
-# given location
-function v() {
-	if [ $# -eq 0 ]; then
-		vim .
-	else
-		vim "$@"
-	fi
-}
-
-# `o` with no arguments opens current directory, otherwise opens the given
-# location
-function o() {
-	if [ $# -eq 0 ]; then
-		open .
-	else
-		open "$@"
 	fi
 }
 
@@ -317,12 +243,9 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
 }
 
-#	ansible
-function ap() {
-	ansible-playbook $PWD/ansible/$1.yml
-}
 function update(){
 	cd $HOME;
+	sudo -v;
 	sudo chown -R $USER $HOME
 	softwareupdate -ia;
 	sudo npm install npm@latest -g;
@@ -346,18 +269,7 @@ function docker-clean(){
 	docker rmi $(docker images -q -f dangling=true)
 }
 
-untagged_containers() {
-	# Print containers using untagged images: $1 is used with awk's print: 0=line, 1=column 1.
-	# NOTE: "[0-9a-f]{12}" does not work with GNU Awk 3.1.7 (RHEL6).
-	#       Ref: https://github.com/blueyed/dotfiles/commit/a14f0b4b#commitcomment-6736470
-	docker ps -a | tail -n +2 | awk '$2 ~ "^[0-9a-f]+$" {print $'$1'}'
-}
-
-untagged_images() {
-	# Print untagged images: $1 is used with awk's print: 0=line, 3=column 3.
-	# NOTE: intermediate images (via -a) seem to only cause
-	# "Error: Conflict, foobarid wasn't deleted" messages.
-	# Might be useful sometimes when Docker messed things up?!
-	# docker images -a | awk '$1 == "<none>" {print $'$1'}'
-	docker images | tail -n +2 | awk '$1 == "<none>" {print $'$1'}'
+function cleanup(){
+	find ~ -name '*.DS_Store' -type f -ls -delete -print;
+	b2d && docker-clean
 }
