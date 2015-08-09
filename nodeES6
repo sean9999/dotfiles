@@ -1,0 +1,7 @@
+#!/bin/bash
+#	launch node with some next-gen switches
+n="$(which node)"
+if [ "$n" == "" ]; then
+	n="$(which nodejs)"
+fi
+"$n" --harmony --harmony_typeof --use_strict

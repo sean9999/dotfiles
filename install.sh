@@ -9,6 +9,10 @@ rm -rvf $INSTALL_DIR/.git 2> /dev/null
 echo "cloning..."
 git clone https://github.com/sean9999/dotfiles.git $INSTALL_DIR
 cd $INSTALL_DIR
+#	node --harmony executable
+sudo -Hn mv nodeES6 /usr/local/bin/
+sudo -Hn chmod +x /usr/local/bin/nodeES6
+
 git status
 npm install
 npm link || sudo -Hn npm link
