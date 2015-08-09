@@ -11,12 +11,16 @@ git clone https://github.com/sean9999/dotfiles.git $INSTALL_DIR
 cd $INSTALL_DIR
 git status
 npm install
-if [ "$(which node)" == "" ] && [ "$(which nodejs)" != "" ]; then
-	sudo -H ln -s "$(which nodejs)"  `dirname $(which nodejs)`/node
-	sudo -H npm link
-else
-	npm link
-fi
+npm link
+
+#if [ "$(which node)" == "" ] && [ "$(which nodejs)" != "" ]; then
+#	sudo -Hn ln -s "$(which nodejs)"  `dirname $(which nodejs)`/node
+#	sudo -Hn npm link
+#else
+#	
+#fi
+#
+
 echo >> ~/.bash_profile
 echo '#	dotfiles' >> ~/.bash_profile
 echo "if [ -f $INSTALL_DIR/bootstrap ]; then source $INSTALL_DIR/bootstrap; fi" >> ~/.bash_profile
