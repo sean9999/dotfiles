@@ -1,0 +1,3 @@
+#!/bin/bash
+#	node harmony
+eval "$(n bin 0.12.7) --harmony $1"

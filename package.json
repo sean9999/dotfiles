@@ -7,7 +7,7 @@
     "test": "grunt test cli/test"
   },
   "bin": {
-    "dotfiles": "cli/main.js"
+    "dotfiles": "cli.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,6 @@
   "homepage": "https://github.com/sean9999/dotfiles#readme",
   "dependencies": {
     "bash-color": "0.0.3",
-    "npm": "^2.13.2"
+    "columnizer": "~0.1.0"
   }
 }

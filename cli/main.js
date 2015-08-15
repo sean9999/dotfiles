@@ -1,16 +1,11 @@
-#!/usr/bin/env node
 "use strict";
 
 var fs = require('fs'),
-	colour = require('bash-color'),
 	CLIError = require('./error.js'),
-	playsound = require('./playsound.js'),
 	vars = require('./vars.js'),
 	submodulename = process.argv[2] || "help",
 	submodule = function(){},
-	submoduleargs = {
-		object: process.argv[3] || ""
-	},
+	submoduleargs = process.argv.slice(3),
 	legal_submodule_names=[];
 
 fs.readdir( __dirname + '/lib',function(err,files){
@@ -29,23 +24,29 @@ fs.readdir( __dirname + '/lib',function(err,files){
 	main();
 });
 
+function good(stuff){
+	console.log(stuff);
+};
+
+function bad(errorOrString){
+	var error;
+	if (typeof errorOrString === 'string') {
+		error = new Error(errorOrString);
+	} else if ( errorOrString instanceof Error ) {
+		error = errorOrString;
+	} else {
+		error = Error('Badly Invoked Error with type: ' + typeof errorOrString);
+		console.error(errorOrString);
+	}
+	throw new CLIError(error);
+};
+
 function main(){
 	switch (submodulename) {
 		case 'some-illegal-submodule-name':
 		vars.error = new Error('Submodule exists but cannot be legally invoked');
 		default:
-		try {
-			submodule(submodulename,submoduleargs,vars);
-			if ("error" in vars && vars.error) {
-				throw vars.error;
-			}
-		} catch (err) {
-			try {
-				throw new CLIError(err);
-			} catch (clierror) {
-				console.error(clierror.message);
-			}
-		}
+		submodule(submodulename,submoduleargs,vars).then(good).catch(bad);
 		break;
 	}
 }

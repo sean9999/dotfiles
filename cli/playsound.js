@@ -10,7 +10,7 @@ var spawn = require('child_process').spawn;
 const CLIP_ROOT = __dirname + '/assets/';
 
 var playsound = function(clipname){
-	var clip_path = CLIP_ROOT + clipname + '.mp3';
+	var clip_path = CLIP_ROOT + clipname;
 	var command = '/usr/bin/env';
 	var args = ['play','-q','-v','0.2',clip_path];
 	var options = {

@@ -1,4 +1,5 @@
 "use strict";
+
 var vars = require('./config.json');
 vars.get = function(k){
 	if (k in vars) {
@@ -10,4 +11,8 @@ vars.get = function(k){
 vars.set = function(k,v){
 	vars[k] = v;
 };
+vars.rootDirectory = function(){
+	return vars.rootdir.replace('~',process.env.HOME);
+};
+
 module.exports = vars;
