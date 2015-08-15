@@ -1,26 +1,19 @@
 [include]
-	path = ~/.gituser
-	path = ~/.gitcredentialhelper
+	path = .gitconfig-user
+	path = .gitconfig-credential
 [alias]
-	# View the current working tree status using the short format
 	s = status
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-space-change "
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-all-space "
+	l = log --graph -n 20 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	# Pull in remote changes for the current repository and all its submodules
 	p = !"git pull; git submodule foreach git pull origin master"
-	# pull and then push
 	pp = !"git pull; git push"
-	# Commit all changes
 	ac = !git add -A && git commit -av
-	# Switch to a branch, creating it if necessary
 	go = checkout -B
-	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
-	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
 	# Interactive rebase with the given number of latest commits
 	reb = "!r() { git rebase -i HEAD~$1; }; r"
@@ -34,8 +27,6 @@
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 	# Remove branches that have already been merged with master
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-	# wassup?
-	l = log --graph -n 20 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
 	# reword
 	reword = commit --amend --only -v --
 [apply]
