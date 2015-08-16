@@ -24,7 +24,7 @@ var darwinParams = function(clip_path) {
 };
 
 var ubuntuParams = function(clip_path) {
-	var command '/usr/bin/env';
+	var command = '/usr/bin/env';
 	var args = ['aplay',clip_path + '.wav'];
 	var options = {
 		stdio: ['ignore','ignore','ignore'],
@@ -42,10 +42,10 @@ var playsound = function(clipname){
 	var params = {};
 	switch (process.platform) {
 		case 'linux':
-		params = ubuntuParams();
+		params = ubuntuParams(clip_path);
 		break;
 		default:
-		params = darwinParams();
+		params = darwinParams(clip_path);
 		break;
 	}
 	var clip = spawn(params.command,params.args,params.options);
