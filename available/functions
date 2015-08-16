@@ -244,28 +244,19 @@ function tre() {
 }
 
 function update(){
-	cd $HOME;
-	sudo -v;
-	sudo chown -R $USER $HOME
-	softwareupdate -ia;
-	# node
-	sudo -H n latest;
-	sudo -H npm install npm@latest -g;
-	sudo -H npm update -g;
-	#	homeBrew
-	brew update && brew upgrade brew-cask && brew cleanup;
-	#	latex
-	sudo -H tlmgr update --self --all;
-	#	python
-	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U;
-	sudo -H pip3 install --upgrade pip setuptools;
-	sudo -H pip install --upgrade pip;
-	#	ruby
-	sudo -H gem update `gem list | cut -d ' ' -f 1`;
-	#	docker
-	boot2docker down && boot2docker upgrade;
-	sudo composer self-update;
-	ngrok update;
+	cd $HOME \
+	&& sudo -v \
+	&& sudo chown -R $USER $HOME \
+	&& echo "Apple..." && softwareupdate -ia \
+	&& echo "node..." && sudo -H n latest && sudo -H npm install npm@latest -g && sudo -H npm update -g \
+	&& echo "Homebrew..." && brew update && brew upgrade brew-cask && brew cleanup \
+	&& echo "Latex..." && sudo -H tlmgr update --self --all \
+	&& echo "python..." && sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U && sudo -H pip install --upgrade pip \
+	&& echo "python3..." && sudo -H pip3 install --upgrade pip setuptools \
+	&& echo "ruby..." && sudo -H gem update `gem list | cut -d ' ' -f 1` \
+	&& echo "composer..." && sudo composer self-update \
+	&& echo "ngrok..." && ngrok update \
+	&& echo "Docker..." && docker-machine upgrade dev
 }
 
 function docker-clean(){
