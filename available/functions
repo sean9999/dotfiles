@@ -253,7 +253,7 @@ function update(){
 	sudo -H npm install npm@latest -g;
 	sudo -H npm update -g;
 	#	homeBrew
-	brew update && brew upgrade brew-cask && brew cleanup && ;
+	brew update && brew upgrade brew-cask && brew cleanup;
 	#	latex
 	tlmgr update --self --all;
 	#	python
@@ -274,6 +274,7 @@ function docker-clean(){
 }
 
 function cleanup(){
+	sudo -v;
 	find ~ -name '*.DS_Store' -type f -ls -delete -print;
 	b2d && docker-clean;
 	brew cask cleanup;
