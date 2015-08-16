@@ -2,4 +2,4 @@
 
 cd $HOME/.dotfiles;
 
-eval "$(git $@)";
+git $@;
