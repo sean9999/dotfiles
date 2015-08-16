@@ -9,17 +9,17 @@ module.exports = function(msg,type,config){
 		"error": {
 			"char": "❗",
 			"colour": "red",
-			"sound": "bad.mp3"
+			"sound": "bad"
 		},
 		"success": {
 			"char": "✅",
 			"colour": "green",
-			"sound": "good.mp3"
+			"sound": "good"
 		},
 		"default": {
 			"char": "◱",
 			"colour": false,
-			"sound": "neutral.mp3"
+			"sound": "neutral"
 		}
 	};
 	type = type || 'default';
