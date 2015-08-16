@@ -1,6 +1,6 @@
 [include]
-	path = .gitconfig-user
-	path = .gitconfig-credential
+	path = ~/.gitconfig-user
+	path = ~/.gitconfig-credential
 [alias]
 	s = status
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-all-space "
