@@ -37,6 +37,25 @@ var ubuntuParams = function(clip_path) {
 	return r;
 };
 
+var windowsParams = function(clip_path) {
+
+	var windoze_script = '
+		# http://stackoverflow.com/questions/20418730/batch-file-to-play-a-song
+		@echo off
+		set file=track12.mp3
+		( echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+		  echo Sound.URL = "%file%"
+		  echo Sound.Controls.play
+		  echo do while Sound.currentmedia.duration = 0
+		  echo wscript.sleep 100
+		  echo loop
+		  echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >sound.vbs
+		start /min sound.vbs
+	';
+	return;
+
+};
+
 var playsound = function(clipname){
 	var clip_path = CLIP_ROOT + clipname;
 	var params = {};
