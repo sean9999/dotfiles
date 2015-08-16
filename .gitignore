@@ -1,0 +1,15 @@
+archive/
+enabled/
+private
+*.private.*
+node_modules/
+.DS_Store
+*.log
+*.sublime-*
+*.pyc
+.DS_Store
+Desktop.ini
+._*
+Thumbs.db
+.Spotlight-V100
+.Trashes
