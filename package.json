@@ -2,12 +2,12 @@
   "name": "dotfiles",
   "version": "1.0.0",
   "description": "a dotfile manager",
-  "main": "cli.js",
+  "main": "cli/main.js",
   "scripts": {
     "test": "grunt test cli/test"
   },
   "bin": {
-    "dotfiles": "cli.js"
+    "dotfiles": "cli.sh"
   },
   "repository": {
     "type": "git",
@@ -15,9 +15,10 @@
   },
   "keywords": [
     "dotfiles",
+    "management",
+    "utility",
     "bash",
-    "shell",
-    "utility"
+    "shell"
   ],
   "author": "Sean Macdonald <sean@crazyhorsecoding.com>",
   "license": "ISC",
