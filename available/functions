@@ -248,28 +248,24 @@ function update(){
 	sudo -v;
 	sudo chown -R $USER $HOME
 	softwareupdate -ia;
-	sudo npm install npm@latest -g;
-<<<<<<< HEAD
-	brew update && brew upgrade brew-cask && brew cleanup && brew cask cleanup;
+	#	node
+	sudo -H n latest;
+	sudo -H npm install npm@latest -g;
+	sudo -H npm update -g;
+	#	homeBrew
+	brew update && brew upgrade brew-cask && brew cleanup && ;
+	#	latex
 	tlmgr update --self --all;
+	#	python
 	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U;
+	sudo -H pip3 install --upgrade pip setuptools;
+	sudo -H pip install --upgrade pip;
+	#	ruby
 	sudo -H gem update `gem list | cut -d ' ' -f 1`;
-=======
-	brew update
-	brew upgrade --all
-	sudo -H npm install npm@latest -g
-	sudo -H npm update -g
-	tlmgr update --self --all;
-	sudo -H pip3 install --upgrade pip setuptools
-	sudo -H pip install --upgrade pip
-	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U
-	sudo gem update `gem list | cut -d ' ' -f 1`;
->>>>>>> 366ff6779e8fae0fc2bab3baafb8f0aefad68956
+	#	docker
 	boot2docker down && boot2docker upgrade;
-	n io latest;
-	n latest;
 	sudo composer self-update;
-	ngrok update
+	ngrok update;
 }
 
 function docker-clean(){
@@ -279,5 +275,7 @@ function docker-clean(){
 
 function cleanup(){
 	find ~ -name '*.DS_Store' -type f -ls -delete -print;
-	b2d && docker-clean
+	b2d && docker-clean;
+	brew cask cleanup;
+	sudo -H npm dedupe;
 }
