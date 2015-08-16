@@ -248,14 +248,14 @@ function update(){
 	sudo -v;
 	sudo chown -R $USER $HOME
 	softwareupdate -ia;
-	#	node
+	# node
 	sudo -H n latest;
 	sudo -H npm install npm@latest -g;
 	sudo -H npm update -g;
 	#	homeBrew
 	brew update && brew upgrade brew-cask && brew cleanup;
 	#	latex
-	tlmgr update --self --all;
+	sudo -H tlmgr update --self --all;
 	#	python
 	sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U;
 	sudo -H pip3 install --upgrade pip setuptools;
