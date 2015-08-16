@@ -6,7 +6,8 @@ these are my dotfiles, and also a way to manage them. You should fork it. It's n
 ## requirements
 - curl (if you want to use quick install)
 - git (your dotfiles are managed in a git repo)
-- node (the command line utility is powered by node)
+- node (the command line utility is powered by node. Version 0.12.7 recommended)
+- You must be willing to install this application in ~/.dotfiles. It assumes that location.
 
 ## quick install (requires curl)
 > curl https://raw.githubusercontent.com/sean9999/dotfiles/master/install.sh | bash
@@ -26,7 +27,7 @@ these are my dotfiles, and also a way to manage them. You should fork it. It's n
 
 ### install the command line utility
 > npm install
-> npm link 2> /dev/null || sudo -Hn npm link
+> npm link 2> /dev/null || sudo -H npm link
 
 ### add bootstrapping code to your .bash_profile
 
