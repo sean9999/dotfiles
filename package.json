@@ -1,0 +1,33 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "a dotfile manager",
+  "main": "cli/main.js",
+  "scripts": {
+    "test": "grunt test cli/test"
+  },
+  "bin": {
+    "dotfiles": "cli.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sean9999/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles",
+    "management",
+    "utility",
+    "bash",
+    "shell"
+  ],
+  "author": "Sean Macdonald <sean@crazyhorsecoding.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sean9999/dotfiles/issues"
+  },
+  "homepage": "https://github.com/sean9999/dotfiles#readme",
+  "dependencies": {
+    "bash-color": "0.0.3",
+    "columnizer": "~0.1.0"
+  }
+}
