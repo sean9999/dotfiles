@@ -1,6 +1,8 @@
 #!/bin/bash
 
+# docker machine (default)
+>>>>>>> d689d5264fd083a6cd3cedce2ce975fbff28dbb8
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/smacdonald/.docker/machine/machines/default"
+export DOCKER_CERT_PATH="$HOME/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
