@@ -12,7 +12,8 @@ if [ -d ~/.dotfiles ]; then
 			archivedir=archive/`git rev-parse HEAD`/home
 			archivefile=${dotfile/\/home\//\/$archivedir\/}
 			if [ -h "$localfile" ] && [ `readlink $localfile` == "$dotfile" ]; then
-				x=5
+				x=5;
+				# the file exists but is not a real file
 			else
 				echo "linking $localfile to to $dotfile"
 				mkdir -p ~/.dotfiles/$archivedir

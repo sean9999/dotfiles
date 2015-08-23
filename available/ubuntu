@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#	keyboard key repeat rate
+xset r rate 256 64
