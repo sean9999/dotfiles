@@ -8,17 +8,17 @@ if [ -d ~/.dotfiles ]; then
 	#	home dir files
 	for dotfile in `find ~/.dotfiles/home -type f`; do
 		if [ -r "$dotfile" ]; then
+
 			localfile=${dotfile/\/\.dotfiles\/home}
-			archivedir=archive/`git rev-parse HEAD`/home
-			archivefile=${dotfile/\/home\//\/$archivedir\/}
+			archivedir=~/.dotfiles/archive/"$(git rev-parse HEAD)"/home
+			archivefile=$archivedir/"$(basename $localfile)"
+
 			if [ -h "$localfile" ] && [ `readlink $localfile` == "$dotfile" ]; then
 				x=5;
 				# the file exists but is not a real file
 			else
-				echo "linking $localfile to to $dotfile"
-				mkdir -p ~/.dotfiles/$archivedir
+				mkdir -p $archivedir
 				if [ -r $localfile ]; then
-					echo "archiving $localfile to to $archivefile"
 					mv $localfile $archivefile
 				fi
 				ln -s $dotfile $localfile
@@ -28,7 +28,7 @@ if [ -d ~/.dotfiles ]; then
 	#	delete broken symlinks
 	#	@TODO fix this warning
 	#	find: warning: you have specified the -maxdepth option after a non-option argument -type, but options are not positional (-maxdepth affects tests specified before it as well as those specified after it).  Please specify options before other arguments.
-	find ~ -type l -maxdepth 1 ! -exec test -r {} \; -delete
+	find ~ -maxdepth 1 -type l ! -exec test -r {} \; -delete
 fi
 #	cleanup
 unset file
