@@ -270,4 +270,5 @@ function cleanup(){
 	b2d && docker-clean;
 	brew cask cleanup;
 	sudo -H npm dedupe;
+	rm -rvf /tmp/*
 }
