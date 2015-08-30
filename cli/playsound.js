@@ -39,6 +39,7 @@ var ubuntuParams = function(clip_path) {
 
 var windowsParams = function(clip_path) {
 
+	/*
 	var windoze_script = '
 		# http://stackoverflow.com/questions/20418730/batch-file-to-play-a-song
 		@echo off
@@ -52,6 +53,7 @@ var windowsParams = function(clip_path) {
 		  echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >sound.vbs
 		start /min sound.vbs
 	';
+	*/
 	return;
 
 };
