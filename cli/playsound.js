@@ -11,7 +11,7 @@ const CLIP_ROOT = __dirname + '/assets/';
 
 var darwinParams = function(clip_path) {
 	var command = '/usr/bin/env';
-	var args = ['afplay','-q','-v','0.2',clip_path + '.wav'];
+	var args = ['afplay','-v','0.2',clip_path + '.wav'];
 	var options = {
 		stdio: ['ignore','ignore','ignore'],
 		detached: true
@@ -20,7 +20,6 @@ var darwinParams = function(clip_path) {
 	r.command = command;
 	r.args  = args;
 	r.options = options;
-	console.log(command,args,options);
 	return r;
 };
 
