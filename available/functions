@@ -256,7 +256,7 @@ function update(){
 	&& echo "ruby..." && sudo -H gem update `gem list | cut -d ' ' -f 1` \
 	&& echo "composer..." && sudo composer self-update \
 	&& echo "ngrok..." && ngrok update \
-	&& echo "Docker..." && docker-machine start dev && docker-machine upgrade dev && docker-machine start default && docker-machine upgrade default
+	&& echo "Docker..." && docker-machine start default && docker-machine upgrade default
 }
 
 function docker-clean(){
