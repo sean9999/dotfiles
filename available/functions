@@ -222,6 +222,15 @@ function s() {
 	fi
 }
 
+# open the default app
+function o() {
+	if [ "$(uname)" == "Linux" ]; then
+		xdg-open $1
+	else
+		open $11
+	fi
+}
+
 # `np` with an optional argument `patch`/`minor`/`major`/`<version>`
 # defaults to `patch`
 function np() {
