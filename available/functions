@@ -263,7 +263,8 @@ function update(){
 function osx_update(){
 	cd $HOME \
 	&& sudo -v \
-	&& sudo chown -R $USER $HOME \
+    && echo "removing chflags..." && sudo chflags -Rv nouchg $HOME \
+	&& echo 'ensure $USER owns $HOME...' && sudo chown -R $USER $HOME \
 	&& echo "Apple..." && softwareupdate -ia \
 	&& echo "node..." && sudo -H n latest && sudo -H npm install npm@latest -g && sudo -H npm update -g \
 	&& echo "Homebrew..." && brew update && brew upgrade brew-cask && brew cleanup \

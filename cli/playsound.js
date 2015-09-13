@@ -11,7 +11,7 @@ const CLIP_ROOT = __dirname + '/assets/';
 
 var darwinParams = function(clip_path) {
 	var command = '/usr/bin/env';
-	var args = ['play','-q','-v','0.2',clip_path + '.mp3'];
+	var args = ['afplay','-v','0.2',clip_path + '.wav'];
 	var options = {
 		stdio: ['ignore','ignore','ignore'],
 		detached: true
@@ -35,6 +35,27 @@ var ubuntuParams = function(clip_path) {
 	r.args  = args;
 	r.options = options;
 	return r;
+};
+
+var windowsParams = function(clip_path) {
+
+	/*
+	var windoze_script = '
+		# http://stackoverflow.com/questions/20418730/batch-file-to-play-a-song
+		@echo off
+		set file=track12.mp3
+		( echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
+		  echo Sound.URL = "%file%"
+		  echo Sound.Controls.play
+		  echo do while Sound.currentmedia.duration = 0
+		  echo wscript.sleep 100
+		  echo loop
+		  echo wscript.sleep (int(Sound.currentmedia.duration^)+1^)*1000) >sound.vbs
+		start /min sound.vbs
+	';
+	*/
+	return;
+
 };
 
 var playsound = function(clipname){
