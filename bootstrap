@@ -30,6 +30,7 @@ if [ -d ~/.dotfiles ]; then
 	#	find: warning: you have specified the -maxdepth option after a non-option argument -type, but options are not positional (-maxdepth affects tests specified before it as well as those specified after it).  Please specify options before other arguments.
 	find ~ -maxdepth 1 -type l ! -exec test -r {} \; -delete
 fi
+cd $OLDPWD
 #	cleanup
 unset file
 unset dotfile
@@ -37,4 +38,3 @@ unset localfile
 unset archivefile
 unset archivedir
 unset x
-cd $OLDPWD
