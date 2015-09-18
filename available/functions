@@ -222,6 +222,15 @@ function s() {
 	fi
 }
 
+# open the default app
+function o() {
+	if [ "$(uname)" == "Linux" ]; then
+		xdg-open $1
+	else
+		open $11
+	fi
+}
+
 # `np` with an optional argument `patch`/`minor`/`major`/`<version>`
 # defaults to `patch`
 function np() {
@@ -254,7 +263,8 @@ function update(){
 function osx_update(){
 	cd $HOME \
 	&& sudo -v \
-	&& sudo chown -R $USER $HOME \
+    && echo "removing chflags..." && sudo chflags -Rv nouchg $HOME \
+	&& echo 'ensure $USER owns $HOME...' && sudo chown -R $USER $HOME \
 	&& echo "Apple..." && softwareupdate -ia \
 	&& echo "node..." && sudo -H n latest && sudo -H npm install npm@latest -g && sudo -H npm update -g \
 	&& echo "Homebrew..." && brew update && brew upgrade brew-cask && brew cleanup \
@@ -270,12 +280,10 @@ function osx_update(){
 function ubuntu_update(){
 	cd $HOME \
 	&& sudo -v \
-	&& sudo chown -R $USER $HOME \
 	&& echo "apt..." && sudo apt-get update && sudo apt-get -q upgrade \
-	&& echo "npm..." && sudo -H npm update npm -g && sudo -H npm update -g \
-	&& echo "docker..." && sudo -H docker-machine upgrade dev \
-	&& echo "composer..." && sudo -H composer sellf-update \
-	&& echo "Latex..." && sudo -H tlmgr update --self --all \
+	&& echo "npm..." && sudo -H npm update -g \
+	&& echo "composer..." && sudo -H composer selfupdate \
+	&& echo "Latex..." && tlmgr update --self --all \
 	&& echo "python..." && sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U && sudo -H pip install --upgrade pip \
 	&& echo "python3..." && sudo -H pip3 install --upgrade pip setuptools
 }
