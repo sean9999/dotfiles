@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# docker machine (default)
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="$HOME/.docker/machine/machines/default"
-export DOCKER_MACHINE_NAME="default"
+#   find the first docker-machine, start it, and set appropriate environment variables
+machinename="$(docker-machine ls -q | head -n 1)"
+docker-machine start "$machinename"
+eval "$(docker-machine env $machinename)"
