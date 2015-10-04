@@ -4,3 +4,4 @@
 machinename="$(docker-machine ls -q | head -n 1)"
 docker-machine start "$machinename"
 eval "$(docker-machine env $machinename)"
+
