@@ -300,3 +300,7 @@ function cleanup(){
 	sudo -H npm dedupe;
 	rm -rvf /tmp/*
 }
+
+function git_progenitor(){
+	
+}
