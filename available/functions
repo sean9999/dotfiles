@@ -274,7 +274,7 @@ function osx_update(){
 	&& echo "ruby..." && sudo -H gem update `gem list | cut -d ' ' -f 1` \
 	&& echo "composer..." && sudo composer self-update \
 	&& echo "ngrok..." && ngrok update \
-	&& echo "Docker..." && docker-machine upgrade dev
+	&& echo "Docker..." && docker-machine upgrade $(docker-machine ls -q | head -n 1)
 }
 
 function ubuntu_update(){
@@ -289,15 +289,19 @@ function ubuntu_update(){
 }
 
 function docker-clean(){
-	docker rm $(docker ps -a -q)
+	docker rm -v $(docker ps -a -q -f status=exited)
 	docker rmi $(docker images -q -f dangling=true)
+	docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
 }
 
 function cleanup(){
 	sudo -v;
 	find ~ -name '*.DS_Store' -type f -ls -delete -print;
-	b2d && docker-clean;
 	brew cask cleanup;
 	sudo -H npm dedupe;
 	rm -rvf /tmp/*
+}
+
+function git_progenitor(){
+	echo "someday this function will take a path and return the path of the top-most git repo. It will not be fooled by submodules."	
 }

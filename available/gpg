@@ -2,3 +2,4 @@
 
 GPG_TTY=$(tty)
 export GPG_TTY
+export GPGKEY=7C6B0A7F
