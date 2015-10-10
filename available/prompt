@@ -9,7 +9,7 @@ if [ ! -f ~/.prompt_colors ]; then
 	function get_rand() {
 		RANGE=256
 		number=$RANDOM
-		let "number %= $RANGE" 
+		let "number %= $RANGE"
 		printf "'%s'" "\e[38;5;${number}m"
 		#printf "%s" number
 	}
