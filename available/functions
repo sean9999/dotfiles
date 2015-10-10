@@ -303,9 +303,5 @@ function cleanup(){
 }
 
 function git_progenitor(){
-<<<<<<< HEAD
-	echo "not yet coded";	
-=======
 	echo "someday this function will take a path and return the path of the top-most git repo. It will not be fooled by submodules."	
->>>>>>> 119f88c5bc336284116c8026e4f53c2fc65c072b
 }
