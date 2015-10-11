@@ -266,7 +266,7 @@ function osx_update(){
     && echo "removing chflags..." && sudo chflags -Rv nouchg $HOME \
 	&& echo 'ensure $USER owns $HOME...' && sudo chown -R $USER $HOME \
 	&& echo "Apple..." && softwareupdate -ia \
-	&& echo "node..." && sudo -H n latest && sudo -H npm install npm@latest -g && sudo -H npm update -g \
+	&& echo "node..." && sudo -H npm update npm -g && sudo -H n latest && sudo -H npm install npm@latest -g && sudo -H npm update -g \
 	&& echo "Homebrew..." && brew update && brew upgrade brew-cask && brew cleanup \
 	&& echo "Latex..." && sudo -H tlmgr update --self --all \
 	&& echo "python..." && sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U && sudo -H pip install --upgrade pip \
