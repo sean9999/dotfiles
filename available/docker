@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #   start up and set up docker environment
 #   pass in a machine name if you want. Otherwise the script makes an educated guess.
 function doc() {
