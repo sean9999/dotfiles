@@ -23,6 +23,7 @@ module.exports 	= function(submodulename,submoduleargs,vars) {
 		child.on('close', function (code) {
 			var msg = 'child process exited with code ' + code;
 			if (code === 0) {
+				//	run dotfiles_reload and then resolve
 				resolve( fancy(msg,'success'));
 			} else {
 				reject(Error(msg));
