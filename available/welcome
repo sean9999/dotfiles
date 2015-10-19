@@ -1,0 +1,9 @@
+#!/bin/bash
+
+a silly welcome talking thingy
+
+if [ "$(uname)" == "Linux" ]; do
+	spd-say "welcome, $USER"
+else
+	say "Welcome, $USER"
+done
