@@ -1,5 +1,6 @@
 archive/
 enabled/
+!enabled/dotfiles_core
 private
 *.private.*
 node_modules/
