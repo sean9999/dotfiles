@@ -1,5 +1,5 @@
 archive/
-enabled/
+enabled/*
 !enabled/dotfiles_core
 private
 *.private.*
