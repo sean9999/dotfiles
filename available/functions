@@ -303,9 +303,13 @@ function cleanup(){
 }
 
 function git_progenitor(){
-	echo "someday this function will take a path and return the path of the top-most git repo. It will not be fooled by submodules."	
+	echo "someday this function will take a path and return the path of the top-most git repo. It will not be fooled by submodules."
 }
 
 function checksum(){
 	(echo "Algorithm Checksum"; for alg in "-md5" "-sha" "-sha1" "-sha256" "-sha512"; do echo $(openssl dgst $alg $1); done) | column -t
+}
+
+function now(){
+	echo "$(date +"%Y-%m-%d-%H-%M")"
 }

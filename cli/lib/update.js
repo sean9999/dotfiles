@@ -9,6 +9,7 @@ module.exports = function(modulename,args,vars) {
                 console.error(stderr);
                 reject(err);
             } else {
+                //  run dotfiles_reload and then resolve
                 resolve(stdout);
             }
         });
