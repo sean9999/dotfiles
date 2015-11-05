@@ -9,7 +9,13 @@ var child_process = require('child_process'),
 
 module.exports 	= function(submodulename,submoduleargs,vars) {
 	return new Promise(function(resolve,reject){
-		var editor	= process.env.EDITOR || "open";
+		var editor = process.env.EDITOR || (function(os){
+			var opener = 'open';
+			if (os == 'linux') {
+				opener = 'xdg-open';
+			}
+			return opener;
+		})(process.platform);
 		var filepath= '~/.dotfiles/available/'.replace('~',process.env.HOME) + submoduleargs[0];
 		var exec	= (editor + ' ' + filepath).split(/\s+/g);
 		var options	= {};
@@ -17,6 +23,7 @@ module.exports 	= function(submodulename,submoduleargs,vars) {
 		child.on('close', function (code) {
 			var msg = 'child process exited with code ' + code;
 			if (code === 0) {
+				//	run dotfiles_reload and then resolve
 				resolve( fancy(msg,'success'));
 			} else {
 				reject(Error(msg));

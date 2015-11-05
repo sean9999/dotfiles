@@ -1,4 +1,8 @@
 #!/bin/bash
 
 # java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home"
+if [ "$(uname)" == "Linux" ]; then
+	export JAVA_HOME="/usr/lib/jvm/java-6-openjdk-amd64"
+else
+	export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home"	
+fi

@@ -11,6 +11,7 @@ module.exports = function(submodulename,args,vars){
 				if (err) {
 					reject(err);
 				} else {
+					//	run dotfiles_reload and then resolve
 					resolve( fancy('The dotfile '+args[0]+'was disabled') );
 				}
 			});
