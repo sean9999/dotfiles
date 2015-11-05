@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#   commands necessary to make dotfiles work
+
+alias dotfiles_reload='source ~/.dotfiles/bootstrap'

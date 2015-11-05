@@ -1,4 +1,5 @@
 #!/bin/bash
 
 #	keyboard key repeat rate
-xset r rate 256 64
+#	fail silently
+xset r rate 256 64 2> /dev/null
