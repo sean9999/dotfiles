@@ -22,6 +22,9 @@ module.exports = function(submodulename,submoduleargs,vars){
 
 		fs.readdir(vars.rootDirectory()+'/enabled',function(err,files){
 			if (err) reject(err);
+			if (!files) {
+				files = [];
+			}
 			en = files.filter(allowed);
 			fs.readdir(vars.rootDirectory()+'/available',function(err,files2){
 				if (err) reject(err);
