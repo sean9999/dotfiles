@@ -24,8 +24,7 @@ In the documentation we use the word *dotfiles* to refer to both this utility an
 
 ### clone the repo
 
-> git clone https://github.com/sean9999/dotfiles.git ~/.dotfiles
-> cd ~/.dotfiles
+> git clone https://github.com/sean9999/dotfiles.git ~/.dotfiles && cd ~/.dotfiles
 
 ### set up an executable that runs a modern version of node with the --harmony flag
 

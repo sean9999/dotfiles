@@ -9,7 +9,7 @@ if [ ! -f ~/.prompt_colors ]; then
 	function get_rand() {
 		RANGE=256
 		number=$RANDOM
-		let "number %= $RANGE" 
+		let "number %= $RANGE"
 		printf "'%s'" "\e[38;5;${number}m"
 		#printf "%s" number
 	}
@@ -37,9 +37,9 @@ function parse_git_branch() {
 }
 
 if [ `type -t parse_git_dirty` = "function" ]; then
-	export PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"\[$(p $PROMPT_COLOUR_CHAR)\] ⍦ \")\[$(p $PROMPT_COLOUR_BRANCH)\]\$(parse_git_branch)\[$(p $PROMPT_COLOUR_BRANCH)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
-	export PS2="\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"\[$(p $PROMPT_COLOUR_CHAR)\] ⍦ \")\[$(p $PROMPT_COLOUR_BRANCH)\]\$(parse_git_branch)\[$(p $PROMPT_COLOUR_BRANCH)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
 else
-	export PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\] \[$(p $PROMPT_COLOUR_RESET)\]"
-	export PS2="\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\] \[$(p $PROMPT_COLOUR_RESET)\]"
+	export PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
 fi
