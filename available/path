@@ -1,3 +1,9 @@
 #!/bin/bash
 
 export PATH="$HOME/bin:$HOME/.node/bin:/usr/local/sbin:$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/smacdonald/google-cloud-sdk/path.bash.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/smacdonald/google-cloud-sdk/completion.bash.inc'
