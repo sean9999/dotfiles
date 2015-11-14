@@ -5,7 +5,8 @@
 function doc() {
     if [ $# -eq 0 ]; then
         #   find the first docker-machine poduced by docker-machine ls, start it, and set appropriate environment variables
-        machinename="$(docker-machine ls -q | head -n 1)"
+        machinename="$(docker-machine active 2> /dev/null || docker-machine ls -q | head -n 1)"
+        echo "we think the machine you want is $machinename"
     else
         machinename="$1"
     fi
