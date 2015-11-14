@@ -93,3 +93,7 @@
 [user]
 	name = Sean Macdonald
 	email = sean.macdonald@stjoseph.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
