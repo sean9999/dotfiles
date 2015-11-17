@@ -19,3 +19,6 @@ function doc() {
     docker-machine ls;
     env | grep "DOCKER_\w\+";
 }
+
+#   let's start up orchestra by default
+doc orchestra
