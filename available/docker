@@ -21,4 +21,4 @@ function doc() {
 }
 
 #   let's start up orchestra by default
-doc orchestra
+#doc orchestra
