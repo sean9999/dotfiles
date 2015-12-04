@@ -1,5 +1,5 @@
 #!/bin/bash
 
-#export ANSIBLE_HOST_KEY_CHECKING=False
+export ANSIBLE_HOST_KEY_CHECKING=False
 
-source ~/REPOS/ansible/hacking/env-setup
+source ~/ansible/hacking/env-setup
