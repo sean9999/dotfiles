@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="$HOME/bin:$HOME/.node/bin:/usr/local/sbin:$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/tarsnap/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Users/smacdonald/bin:/Users/smacdonald/.node/bin:/Users/smacdonald/ansible/bin:/Users/smacdonald/.neo4j/bin:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
 
 # The next line updates PATH for the Google Cloud SDK.
 #source '/Users/smacdonald/google-cloud-sdk/path.bash.inc'

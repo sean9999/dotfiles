@@ -8,3 +8,5 @@ fi
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+export HOMEBREW_GITHUB_API_TOKEN="b215912b613832e6520a5716d0261a7b7dd7c611"
