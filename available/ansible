@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#	quietly load ansible 2
+source ~/ansible/hacking/env-setup > /dev/null
