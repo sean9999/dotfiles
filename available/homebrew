@@ -1,12 +1,4 @@
 #!/bin/bash
 
-# If possible, add tab completion for many more commands
-[ -f /etc/bash_completion ] && source /etc/bash_completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
-fi
-
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-export HOMEBREW_GITHUB_API_TOKEN="b215912b613832e6520a5716d0261a7b7dd7c611"
