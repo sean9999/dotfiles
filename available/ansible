@@ -1,5 +1,4 @@
 #!/bin/bash
 
-export ANSIBLE_HOST_KEY_CHECKING=False
-
-source ~/ansible/hacking/env-setup
+#	quietly load ansible 2
+source ~/ansible/hacking/env-setup > /dev/null

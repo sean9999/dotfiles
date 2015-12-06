@@ -1,8 +1,13 @@
 #!/bin/bash
 
-# Make Sublime the default editor
-export EDITOR='subl -w'
-export GIT_EDITOR="subl --wait --new-window"
+# Make Sublime the default editor if we're in a gui
+if [ $TERM == "linux" ]; then
+	export EDITOR='nano'
+	export GIT_EDITOR="vim"
+else
+	export EDITOR='subl --wait --new-window'
+	export GIT_EDITOR="subl --wait --new-window"
+fi
 
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
