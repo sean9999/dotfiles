@@ -2,7 +2,7 @@
 
 #   now you can enable bash completion per-module
 #   @TODO: normalize input so that trailing slashes can be sent in without barfing
-function add_to_bash_completion($path){
+function add_to_bash_completion(){
     if [ -f $path ]; then
         source $path
     else if [ -d $path ]; then
