@@ -1,4 +1,10 @@
 #!/bin/bash
 
+#	ensure we've got the latest changes to the stable branch
+cd ~/ansible
+git checkout v2_final
+git pull
+git submodule update --recursive
+
 #	quietly load ansible 2
-source ~/ansible/hacking/env-setup > /dev/null
+source ~/ansible/hacking/env-setup &> /dev/null
