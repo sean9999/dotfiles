@@ -5,6 +5,8 @@ cd ~/ansible
 git checkout v2_final
 git pull
 git submodule update --recursive
+git submodule update --init v1/ansible/modules/core
+git submodule update --init v1/ansible/modules/extras
 
 #	quietly load ansible 2
 source ~/ansible/hacking/env-setup &> /dev/null
