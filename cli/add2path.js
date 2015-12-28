@@ -35,7 +35,7 @@ var args = process.argv.slice(2).filter(function(arg){
         console.trace(stuff);
     };
     var meh = function(msg){
-        console.warn(msg);
+        //console.warn(msg);
     };
 
     var sanityCheck = function(){

@@ -1,9 +1,13 @@
 #!/bin/bash
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/tarsnap/bin:/usr/local/git/bin:/Users/smacdonald/ansible/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:/Users/smacdonald/bin:/Users/smacdonald/.node/bin:/Users/smacdonald/.neo4j/bin:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin"
 
-# The next line updates PATH for the Google Cloud SDK.
-source "~/google-cloud-sdk/path.bash.inc"
-
-# The next line enables shell command completion for gcloud.
-source "~/google-cloud-sdk/completion.bash.inc"
+dotfiles_add2path /usr/local/bin
+dotfiles_add2path /usr/local/sbin
+dotfiles_add2path /usr/bin
+dotfiles_add2path /bin
+dotfiles_add2path /usr/sbin
+dotfiles_add2path /sbin
+dotfiles_add2path /opt/X11/bin
+dotfiles_add2path /usr/local/git/bin
+dotfiles_add2path ~/bin
+dotfiles_add2path ~/.node/bin
