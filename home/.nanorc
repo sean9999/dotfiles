@@ -14,10 +14,10 @@ set wordbounds
 
 ##	Paint the interface elements of nano.
 ##	This is an example; by default there are no colors.
-set titlecolor yellow,purple
-set statuscolor brightwhite,green
-set keycolor green
-set functioncolor yellow
+#set titlecolor yellow,purple
+#set statuscolor brightwhite,green
+#set keycolor green
+#set functioncolor yellow
 
 ##	include files
-include "/usr/share/nano/*.nanorc"
+#include "/usr/share/nano/*.nanorc"

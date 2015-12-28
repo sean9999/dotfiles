@@ -276,6 +276,7 @@ function osx_update(){
 	&& echo "ruby..." && sudo -H gem update `gem list | cut -d ' ' -f 1` \
 	&& echo "composer..." && sudo composer self-update \
 	&& echo "ngrok..." && ngrok update \
+    && echo "perl..." && sudo -H cpan update \
 	&& echo "Docker..." && docker-machine upgrade $(docker-machine ls -q | head -n 1)
 }
 

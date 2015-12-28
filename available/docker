@@ -20,5 +20,10 @@ function doc() {
     env | grep "DOCKER_\w\+";
 }
 
+function dlog() {
+    x="docker logs -f $(docker ps -q)"
+    ( exec $x )
+}
+
 #   let's start up orchestra by default
 #doc orchestra
