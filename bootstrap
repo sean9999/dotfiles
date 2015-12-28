@@ -1,4 +1,10 @@
 #!/bin/bash
+if [ -z $1 ]; then
+    revert_to_dir=~
+else
+    revert_to_dir=$1
+fi
+cd ~/.dotfiles
 if [ -d ~/.dotfiles ]; then
 	#	set up the shell environment
 	for file in ~/.dotfiles/enabled/*; do
@@ -26,6 +32,7 @@ if [ -d ~/.dotfiles ]; then
 	#	delete broken symlinks
 	find ~ -maxdepth 1 -type l ! -exec test -r {} \; -delete
 fi
+cd $revert_to_dir
 #	cleanup
 unset file
 unset dotfile
@@ -33,3 +40,4 @@ unset localfile
 unset archivefile
 unset archivedir
 unset x
+unset revert_to_dir

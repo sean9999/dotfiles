@@ -2,7 +2,7 @@
 
 #   commands necessary to make dotfiles work
 
-alias dotfiles_reload='source ~/.dotfiles/bootstrap'
+alias dotfiles_reload='source ~/.dotfiles/bootstrap $PWD'
 
 function dotfiles_add2path(){
     newdirectory="$1"
