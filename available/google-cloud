@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # The next line updates PATH for the Google Cloud SDK.
-source ~/google-cloud-sdk/path.bash.inc
+dotfiles_add2path ~/google-cloud-sdk/bin
 
 # The next line enables bash completion for gcloud.
 source ~/google-cloud-sdk/completion.bash.inc

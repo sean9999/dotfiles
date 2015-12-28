@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 /**
  * add2path. a helper to manage Bash's $path
  * accepts a path (string), and an optional position specifier (int), and gloms it onto the path, if it's not already there
@@ -15,19 +14,14 @@
  **/
 
 var fs = require('fs');
-
 //  remove zero-length args
 var args = process.argv.slice(2).filter(function(arg){
     return (arg);
 });
 
 ;(function(args){
-
     "use strict";
-
     var good = function(stuff){
-        //console.log(stuff);
-
         process.stdout.write( stuff.trim() );
 
     };
@@ -37,7 +31,6 @@ var args = process.argv.slice(2).filter(function(arg){
     var meh = function(msg){
         //console.warn(msg);
     };
-
     var sanityCheck = function(){
         return new Promise(function(resolve,reject){
             if (args.length < 2) {
@@ -54,7 +47,6 @@ var args = process.argv.slice(2).filter(function(arg){
             resolve(args);
         });
     };
-
     var args2Scope = function(args){
         return new Promise(function(resolve,reject){
             var bigPath = args[0].split(':');
@@ -77,7 +69,6 @@ var args = process.argv.slice(2).filter(function(arg){
             resolve(scope);
         });
     };
-
     var dirExists = function(dir) {
         return new Promise(function(resolve,reject) {
             fs.access(dir,fs.R_OK,function(err) {
@@ -89,7 +80,6 @@ var args = process.argv.slice(2).filter(function(arg){
             });
         });
     };
-
     var removeDirtyDirs = function(scope) {
         return Promise.all( scope.bigPath.map(dirExists) ).then(function(cleanDirs){
             scope.bigPath = cleanDirs.filter(function(dir){
@@ -98,11 +88,18 @@ var args = process.argv.slice(2).filter(function(arg){
             return scope;
         });
     };
-
+    var removeDuplicates = function(scope) {
+        return new Promise(function(resolve,reject){
+            var deduped = scope.bigPath.filter(function(dir,pos,arr){
+                return ( pos === arr.lastIndexOf(dir) );
+            });
+            scope.bigPath = deduped;
+            resolve(scope);            
+        });
+    };
     var serialize = function(scope){
         return Promise.resolve( scope.bigPath.join(':') );
     };
-
     var add2Path = function(scope){
         return new Promise(function(resolve,reject){
             if (scope.wantPosition) {
@@ -127,6 +124,7 @@ var args = process.argv.slice(2).filter(function(arg){
         .then(args2Scope)
         .then(add2Path)
         .then(removeDirtyDirs)
+        .then(removeDuplicates)
         .then(serialize)
         .then(good)
         .catch(bad);
