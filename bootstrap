@@ -1,6 +1,4 @@
 #!/bin/bash
-#current_working_directory="$PWD";
-#cd ~/.dotfiles
 if [ -d ~/.dotfiles ]; then
 	#	set up the shell environment
 	for file in ~/.dotfiles/enabled/*; do
@@ -28,7 +26,6 @@ if [ -d ~/.dotfiles ]; then
 	#	delete broken symlinks
 	find ~ -maxdepth 1 -type l ! -exec test -r {} \; -delete
 fi
-#cd "$current_working_directory"
 #	cleanup
 unset file
 unset dotfile

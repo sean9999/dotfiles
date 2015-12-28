@@ -3,3 +3,9 @@
 #   commands necessary to make dotfiles work
 
 alias dotfiles_reload='source ~/.dotfiles/bootstrap'
+
+function dotfiles_add2path(){
+    newdirectory="$1"
+    position="$2"
+    PATH="$(node ~/.dotfiles/cli/add2path.js $PATH $newdirectory $position)"
+}
