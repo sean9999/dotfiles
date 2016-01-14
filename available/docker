@@ -16,6 +16,7 @@ function doc() {
     else
         eval $(docker-machine env $machinename)
     fi
+    #echo " $(docker-machine env $machinename) " | tr ' ' '\n' >> ~/.sjc/env
     docker-machine ls;
     env | grep "DOCKER_\w\+";
 }

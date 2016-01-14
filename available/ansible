@@ -9,4 +9,6 @@
 #git submodule update --init v1/ansible/modules/extras
 
 #	load ansible 2
-source ~/ansible/hacking/env-setup
+#source ~/ansible/hacking/env-setup
+
+alias python=/usr/local/bin/python3

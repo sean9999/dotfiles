@@ -2,7 +2,12 @@
 
 GPG_TTY=$(tty)
 export GPG_TTY
-export GPGKEY=7C6B0A7F
+
+#   personal
+#export GPGKEY=7C6B0A7F
+
+#   work
+export GPGKEY=AABEA166
 
 if [ $(uname) = "Darwin" ]; then
     dotfiles_add2path /usr/local/MacGPG2/bin
