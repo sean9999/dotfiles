@@ -1,16 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#	clone the repo
-INSTALL_DIR=~/.dotfiles
-cd ~
-echo "installing into $INSTALL_DIR"
-mkdir -p $INSTALL_DIR
-rm $INSTALL_DIR/*
-rm -rvf $INSTALL_DIR/.git 2> /dev/null
-echo "cloning..."
-git clone https://github.com/sean9999/dotfiles.git $INSTALL_DIR
+INSTALL_DIR="$HOME/.dotfiles"
+
 cd $INSTALL_DIR
-mkdir $INSTALL_DIR/enabled
 
 #	install node.js dependencies
 npm install
