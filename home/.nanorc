@@ -21,3 +21,5 @@ set wordbounds
 
 ##	include files
 #include "/usr/share/nano/*.nanorc"
+
+include ~/.nano/syntax/ALL.nanorc

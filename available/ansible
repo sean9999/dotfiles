@@ -11,4 +11,4 @@
 #	load ansible 2
 #source ~/ansible/hacking/env-setup
 
-alias python=/usr/local/bin/python3
+#alias python=/usr/local/bin/python3
