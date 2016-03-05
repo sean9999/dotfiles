@@ -1,0 +1,6 @@
+#!/bin/bash
+
+GOPATH=~/go
+
+dotfiles_add2path /usr/lib/go/bin
+
