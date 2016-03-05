@@ -2,5 +2,5 @@
 
 GOPATH=~/go
 
-dotfiles_add2path /usr/lib/go/bin
+dotfiles_add2path /usr/local/go/bin
 
