@@ -3,3 +3,8 @@
 #	keyboard key repeat rate
 #	fail silently
 xset r rate 256 64 2> /dev/null
+
+#	my zini system seems to need this
+eval $(ssh-agent)
+
+
