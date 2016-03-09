@@ -29,6 +29,7 @@
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 	# reword
 	reword = commit --amend --only -v --
+	spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
