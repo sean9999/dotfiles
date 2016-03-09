@@ -1,14 +1,4 @@
 #!/bin/bash
 
-#	ensure we've got the latest changes to the stable branch
-#cd ~/ansible
-#git checkout v2_final
-#git pull
-#git submodule update --recursive
-#git submodule update --init v1/ansible/modules/core
-#git submodule update --init v1/ansible/modules/extras
+# right now we're happy with ansible out of the box, but that will surely change later
 
-#	load ansible 2
-#source ~/ansible/hacking/env-setup
-
-#alias python=/usr/local/bin/python3

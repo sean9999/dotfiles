@@ -2,8 +2,9 @@
 
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
-if [ $(uname) === "Darwin" ]; then
+if [ $(uname) == "Darwin" ]; then
 	dotfiles_add2path /usr/bin
 else
 	dotfiles_add2path /usr/local/git/bin
 fi
+
