@@ -7,7 +7,7 @@
 	l = log --graph -n 20 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	p = !"git pull; git submodule foreach git pull origin master"
+	#p = !"git pull; git submodule foreach git pull origin master"
 	pp = !"git pull; git push"
 	ac = !git add -A && git commit -av
 	go = checkout -B
@@ -30,6 +30,7 @@
 	# reword
 	reword = commit --amend --only -v --
 	spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
+	nuke = !git branch --delete $1 && git push --delete origin $1
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
