@@ -30,7 +30,7 @@
 	# reword
 	reword = commit --amend --only -v --
 	spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
-	nuke = !git branch --delete $1 && git push --delete origin $1
+	nuke = !echo git branch --delete $1 && echo git push --delete origin
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
