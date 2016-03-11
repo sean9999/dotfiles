@@ -11,6 +11,9 @@ function add_to_bash_completion(){
     fi
 }
 
+#   standard
+add_to_bash_completion "/etc/bash_completion"
+
 #   brew ( global )
 add_to_bash_completion "$(brew --prefix)/etc/bash_completion"
 
