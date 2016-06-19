@@ -31,6 +31,7 @@
 	reword = commit --amend --only -v --
 	spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
 	nuke = !echo git branch --delete $1 && echo git push --delete origin
+	root = rev-parse --show-toplevel
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -98,3 +99,7 @@
 	required = true
 [status]
 	submoduleSummary = true
+[diff "image"]
+	command = ~/bin/git-imgdiff
+[user]
+	email = sean.macdonald@stjoseph.com
