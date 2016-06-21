@@ -7,8 +7,16 @@ export GPG_TTY
 #export GPGKEY=7C6B0A7F
 
 #   work
-export GPGKEY=AABEA166
+#export GPGKEY=AABEA166
+
+function gpg_restart_agent(){
+   killall gpg-agent && eval $(gpg-agent --daemon)  
+}
 
 if [ $(uname) = "Darwin" ]; then
     dotfiles_add2path /usr/local/MacGPG2/bin
+fi
+
+if [[ -n "$SSH_CONNECTION" ]] ;then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
 fi

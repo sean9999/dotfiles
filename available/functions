@@ -261,23 +261,19 @@ function update(){
 }
 
 function osx_update(){
-
-    #&& echo "removing chflags..." && sudo chflags -Rv nouchg $HOME \
-	#&& echo 'ensure $USER owns $HOME...' && sudo chown -R $USER $HOME \
-
 	cd $HOME \
 	&& sudo -v \
 	&& echo "Apple..." && softwareupdate -ia \
-	&& echo "node..." && sudo -H npm update npm -g;
-	echo "Homebrew..." && brew up && brew cleanup \
+	&& echo "node..." && sudo -H npm update npm -g \
+	&& echo "Homebrew..." && brew update && brew upgrade && brew cleanup \
 	&& echo "Latex..." && sudo -H tlmgr update --self --all \
-	&& echo "python..." && sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U && sudo -H pip install --upgrade pip \
-	&& echo "python3..." && sudo -H pip3 install --upgrade pip setuptools \
+	&& echo "python2..." && sudo -H pip2 install --upgrade pip && sudo -H pip2 freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip2 install -U \
+	&& echo "python3..." && sudo -H pip3 install --upgrade pip setuptools && sudo -H pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip3 install -U \
 	&& echo "ruby..." && sudo -H gem update `gem list | cut -d ' ' -f 1` \
 	&& echo "composer..." && sudo composer self-update \
 	&& echo "ngrok..." && ngrok update \
     && echo "perl..." && sudo -H cpan update \
-	&& echo "Docker..." && docker-machine upgrade $(docker-machine ls -q | head -n 1)
+    && docker-clean && cleanup;
 }
 
 function ubuntu_update(){
@@ -305,10 +301,11 @@ function docker-clean(){
 
 function cleanup(){
 	sudo -v;
-	find ~ -name '*.DS_Store' -type f -ls -delete -print;
+	sudo find ~ -name '*.DS_Store' -type f -ls -delete -print;
+    brew services cleanup;
 	brew cask cleanup;
 	sudo -H npm dedupe;
-	rm -rvf /tmp/*
+	sudo rm -rvf /tmp/*
 }
 
 function git_progenitor(){
@@ -321,4 +318,12 @@ function checksum(){
 
 function now(){
 	echo "$(date +"%Y-%m-%d-%H-%M")"
+}
+
+function rand1(){
+    openssl rand -base64 ${1:-32} | tr -d '+\n='
+}
+
+function rand2(){
+	head -n 1 /dev/urandom | base64 | tr -d '\n+='
 }

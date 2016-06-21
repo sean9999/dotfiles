@@ -2,7 +2,7 @@
 
 #   start up and set up docker environment
 #   pass in a machine name if you want. Otherwise the script makes an educated guess.
-function doc() {
+function doc_old() {
     if [ $# -eq 0 ]; then
         #   find the first docker-machine poduced by docker-machine ls, start it, and set appropriate environment variables
         machinename="$(docker-machine active 2> /dev/null || docker-machine ls -q | head -n 1)"
@@ -19,6 +19,12 @@ function doc() {
     #echo " $(docker-machine env $machinename) " | tr ' ' '\n' >> ~/.sjc/env
     docker-machine ls;
     env | grep "DOCKER_\w\+";
+}
+
+#   this is just a stub now that docker-machine is not needed
+#   any reference to the function doc() should be removed, and then doc() should be removed
+function doc() {
+    a=4
 }
 
 function dlog() {
