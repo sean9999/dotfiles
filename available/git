@@ -8,3 +8,5 @@ else
 	dotfiles_add2path /usr/local/git/bin
 fi
 
+#   bash completion
+source ~/.git-completion.bash

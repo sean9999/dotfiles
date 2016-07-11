@@ -3,12 +3,12 @@
 	path = ~/.gitconfig-credential
 [alias]
 	s = status
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-all-space "
-	l = log --graph -n 20 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-all-space --ignore-space-at-eol --ignore-space-change"
+	l = log --graph -n 64 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 	#p = !"git pull; git submodule foreach git pull origin master"
-	pp = !"git pull; git push"
+	pp = !"git pull --all; git remote | xargs -L1 git push --all"
 	ac = !git add -A && git commit -av
 	go = checkout -B
 	tags = tag -l
@@ -101,5 +101,3 @@
 	submoduleSummary = true
 [diff "image"]
 	command = ~/bin/git-imgdiff
-[user]
-	email = sean.macdonald@stjoseph.com

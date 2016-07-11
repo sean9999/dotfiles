@@ -1,4 +1,0 @@
-export WORKON_HOME=~/.envs
-source /usr/local/bin/virtualenvwrapper.sh
-export CFLAGS=-Qunused-arguments
-export CPPFLAGS=-Qunused-arguments

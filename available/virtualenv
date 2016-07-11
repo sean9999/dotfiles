@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#   import virtualenv and virtualenvwrapper into the env
+
+export WORKON_HOME=~/.envs
+source /usr/local/bin/virtualenvwrapper.sh
+export CFLAGS=-Qunused-arguments
+export CPPFLAGS=-Qunused-arguments
+alias DEACTIVATE_VIRTUALENV='deactivate'
+alias WORKON_VIRTUALENV_CEREBRUM='workon cerebrum'
