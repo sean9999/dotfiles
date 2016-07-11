@@ -2,7 +2,7 @@
 ##	Do extended regular expression searches by default.
 set regexp
 
-##	Use this tab size instead of the default; it must be greater than 0.
+##	Use this tab size
 set tabsize 4
 
 ##	Convert typed tabs to spaces.
@@ -12,14 +12,6 @@ set tabstospaces
 ##	characters as parts of words.
 set wordbounds
 
-##	Paint the interface elements of nano.
-##	This is an example; by default there are no colors.
-#set titlecolor yellow,purple
-#set statuscolor brightwhite,green
-#set keycolor green
-#set functioncolor yellow
-
 ##	include files
 #include "/usr/share/nano/*.nanorc"
-
 include ~/.nano/syntax/ALL.nanorc
