@@ -101,3 +101,5 @@
 	submoduleSummary = true
 [diff "image"]
 	command = ~/bin/git-imgdiff
+[gui]
+	editor = subl

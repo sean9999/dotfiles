@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#   aws cli
+
+#   bash completion
+complete -C aws_completer aws
