@@ -1,0 +1,4 @@
+#!/bin/bash
+
+eval "$(pandoc --bash-completion)"
+
