@@ -98,5 +98,3 @@
 	command = ~/bin/git-imgdiff
 [gui]
 	editor = subl
-[credential]
-	helper = /usr/libexec/git-core/git-credential-gnome-keyring
