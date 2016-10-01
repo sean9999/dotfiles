@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#   shad does the needful
+
+function shad() {
+    eval $(ssh-agent)
+    ssh-add
+}
