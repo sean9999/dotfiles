@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-(cd ~/.dotfiles && git crypt unlock)
+#(cd ~/.dotfiles && git crypt unlock)
 
 if [ -z $1 ]; then
     revert_to_dir=~
