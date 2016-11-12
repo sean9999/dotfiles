@@ -2,3 +2,4 @@
 
 GOROOT=/usr/local/go
 dotfiles_add2path /usr/local/go/bin
+dotfiles_add2path /usr/local/opt/go/libexec/bin
