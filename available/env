@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Make Sublime the default editor if we're in a gui
-if [ $TERM == "linux" ]; then
-	export EDITOR='nano'
+if [ -z "$DISPLAY" ]; then
+	export EDITOR="nano"
 	export GIT_EDITOR="vim"
 else
 	export EDITOR='subl --wait --new-window'
