@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z $1 ]; then
-    revert_to_dir=$OLDPWD
+    revert_to_dir=$PWD
 else
     revert_to_dir=$1
 fi
