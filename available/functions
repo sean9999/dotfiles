@@ -242,9 +242,11 @@ function ubuntu_update(){
 
 function docker-clean(){
     if [ $(uname) = "Darwin"  ] ; then
-        docker rm -v $(docker ps -a -q -f status=exited)
-        docker rmi $(docker images -q -f dangling=true)
-        docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
+    	stopped_containers="$(docker ps -a -q -f status=exited)"
+    	docker kill $stopped_containers 2> /dev/null
+        docker rm -v $stopped_containers 2> /dev/null
+        docker rmi $(docker images -q -f dangling=true) 2> /dev/null
+        docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes 2> /dev/null
     else
         sudo docker rm -v $(sudo docker ps -a -q -f status=exited)
         sudo docker rmi $(sudo docker images -q -f dangling=true)
