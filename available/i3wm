@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#	it may be helpful to note that the the environment variable XDG_SESSION_DESKTOP=i3-with-shmlog
+#	is set on i3 sessions, in case these commands have side-effects when in gnome or another desktop environment
+
+#	/bin/funky-terminal is a bash script that randomonly launches different profiles of gnome-terminal
+export TERMINAL=funky-terminal
+
+#	enable natural scrolling
+xinput set-prop 11 283 1
+
+#	allow tap to click
+xinput set-prop 11 273 1

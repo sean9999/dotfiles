@@ -3,4 +3,4 @@
 #   ~/.tarsnaprc has settings making ~/tarsnap/ the tarsnap home
 #   ~/tarsnap/bak.sh is a script suitable for invocation as a cron job
 
-dotfiles_add2path /opt/tarsnap/bin
+#dotfiles_add2path /opt/tarsnap/bin

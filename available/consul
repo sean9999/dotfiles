@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function consul-watchlogs(){
+	journalctl -f --unit=consul
+}
