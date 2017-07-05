@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source ~/repos/integration-devtools/environment/altum/development.env
