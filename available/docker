@@ -2,5 +2,5 @@
 
 #   start up and set up docker environment
 
-export DOCKER_HOST=tcp://$(hostname -f):2376
+export DOCKER_HOST="tcp://wafer.local:2376"
 export DOCKER_TLS_VERIFY=1
