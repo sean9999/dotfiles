@@ -11,7 +11,7 @@
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
   # upstream diff
-  ud = git log "@{u}...HEAD" --graph --decorate --left-right --boundary --pretty=format:'%Cred%h%Creset %d %s %Cgreen(%cr)%Creset %Cblue[%an]%Creset' --abbrev-commit --date=relative
+  ud = log "@{u}...HEAD" --graph --decorate --left-right --boundary --pretty=format:'%Cred%h%Creset %d %s %Cgreen(%cr)%Creset %Cblue[%an]%Creset' --abbrev-commit --date=relative
 	# pull and push.
   pp = !"git pull --all; git remote | xargs -L1 git push --all"
   # add all new changes and then commit
@@ -19,7 +19,7 @@
   # list tags
 	tags = tag -l
   # list branches
-	branches = branch -a
+	branches = branch -a --sort=-committerdate
   # list remotes
 	remotes = remote -v
 	# Find branches containing commit
