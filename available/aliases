@@ -1,11 +1,8 @@
 #!/bin/bash
 
 alias ll='ls -alFGh'
-alias la='ls -AG'
 alias l='ls -GF'
 alias g='git'
-
-#alias d='docker'
-
-# hak version 2
 alias h='h2'
+alias t='funky-terminal'
+

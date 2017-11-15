@@ -1,0 +1,5 @@
+#!/bin/bash
+
+BROWSER=/usr/bin/google-chrome
+export BROWSER
+

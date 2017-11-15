@@ -4,3 +4,5 @@ if [ "$(uname)" = "Darwin" ]; then
     dotfiles_add2path /Library/TeX/texbin
     dotfiles_add2path /Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
 fi
+
+
