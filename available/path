@@ -6,6 +6,6 @@ dotfiles_add2path /usr/bin
 dotfiles_add2path /bin
 dotfiles_add2path /usr/sbin
 dotfiles_add2path /sbin
-dotfiles_add2path /opt/X11/bin
 dotfiles_add2path ~/bin
 dotfiles_add2path ~/.node/bin
+dotfiles_add2path /usr/lib/node_modules/@sean9999

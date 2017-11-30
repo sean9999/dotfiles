@@ -2,21 +2,26 @@
 	path = ~/.gitconfig-user
 	path = ~/.gitconfig-credential
 [alias]
+  # status
 	s = status
+  # pretty diff
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-all-space --ignore-space-at-eol --ignore-space-change"
+  # pretty log
 	l = log --graph -n 64 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	#p = !"git pull; git submodule foreach git pull origin master"
-	pp = !"git pull --all; git remote | xargs -L1 git push --all"
-	ac = !git add -A && git commit -av
-	go = checkout -B
+  # upstream diff
+  ud = log "@{u}...HEAD" --graph --decorate --left-right --boundary --pretty=format:'%Cred%h%Creset %d %s %Cgreen(%cr)%Creset %Cblue[%an]%Creset' --abbrev-commit --date=relative
+	# pull and push.
+  pp = !"git pull --all; git remote | xargs -L1 git push --all"
+  # add all new changes and then commit
+	ac = "!git add --all && git commit"
+  # list tags
 	tags = tag -l
-	branches = branch -a
+  # list branches
+	branches = branch -a --sort=-committerdate
+  # list remotes
 	remotes = remote -v
-	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-	# Interactive rebase with the given number of latest commits
-	reb = "!r() { git rebase -i HEAD~$1; }; r"
 	# Find branches containing commit
 	fb = "!f() { git branch -a --contains $1; }; f"
 	# Find tags containing commit
@@ -29,8 +34,13 @@
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 	# reword
 	reword = commit --amend --only -v --
-	spull = !git pull && git submodule sync --recursive && git submodule update --init --recursive
-	nuke = !echo git branch --delete $1 && echo git push --delete origin
+  # create a new branch and a corresponding upstream branch. link the two
+  newbranch = "!f() { git branch -b $1 && git push -u origin $1 }; f"
+  # pull repos along with all submodules
+	spull = "!git pull && git submodule sync --recursive && git submodule update --init --recursive"
+  # delete it here and in upstream
+	nuke = "!echo git branch --delete $1 && echo git push --delete origin"
+  # echo the full path to the repo root
 	root = rev-parse --show-toplevel
 [apply]
 	# Detect whitespace errors when applying a patch
@@ -49,7 +59,6 @@
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
 	fileMode = false
-	filemode = false
 [color]
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
@@ -70,7 +79,6 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
-# URL shorthands
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"

@@ -6,12 +6,12 @@ cd $INSTALL_DIR
 
 #	install node.js dependencies
 npm install
-npm link 2> /dev/null || sudo -H npm link
+npm link 2> /dev/null || sudo -E npm link
 
 #   @TODO: Make this idempotent
 touch ~/.bash_profile
 echo >> ~/.bash_profile
-echo '#	dotfiles' >> ~/.bash_profile
-echo "source $INSTALL_DIR/bootstrap" >> ~/.bash_profile
+echo '#	dotfiles' >> ~/.bashrc
+echo "source $INSTALL_DIR/bootstrap" >> ~/.bashrc
 source $INSTALL_DIR/bootstrap
 echo 'dotfiles is now installed!'

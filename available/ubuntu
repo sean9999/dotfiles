@@ -5,5 +5,8 @@
 xset r rate 256 64 2> /dev/null
 
 #	my zini system seems to need this
-eval $(ssh-agent) >~/.dotfiles/logz/ssh-agent-id.pid
+mkdir -p ~/.dotfiles/logz
+touch ~/.dotfiles/logz/ssh-agent-id.pid
+echo >> ~/.dotfiles/logz/ssh-agent-id.pid
+eval $(ssh-agent) >> ~/.dotfiles/logz/ssh-agent-id.pid
 

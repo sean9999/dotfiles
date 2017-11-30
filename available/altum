@@ -1,0 +1,3 @@
+#!/bin/bash
+
+source ~/repos/altum/integration-devtools/environment/altum/build/development/etc_profiled 

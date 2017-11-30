@@ -1,6 +1,6 @@
 {
-  "name": "@sean9999/dotfiles",
-  "version": "1.0.2",
+  "name": "@code_monk/dotfiles",
+  "version": "1.0.3",
   "description": "a dotfile manager",
   "main": "cli/main.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sean9999/dotfiles.git"
+    "url": "git+https://gitlab.com/code_monk/dotfiles.git"
   },
   "keywords": [
     "dotfiles",
@@ -23,9 +23,9 @@
   "author": "Sean Macdonald <sean@crazyhorsecoding.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sean9999/dotfiles/issues"
+    "url": "https://gitlab.com/code_monk/dotfiles/issues"
   },
-  "homepage": "https://github.com/sean9999/dotfiles#readme",
+  "homepage": "https://gitlab.com/code_monk/dotfiles#readme",
   "dependencies": {
     "bash-color": "0.0.3",
     "columnizer": "~0.1.0"

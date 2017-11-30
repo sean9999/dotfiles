@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#	We think i3 should set an env var like  XDG_SESSION_DESKTOP=i3-with-shmlog
+#	but don't see that happening, so dirty checking is required
+
+#	/bin/funky-terminal is a bash script that randomonly launches different profiles of gnome-terminal
+export TERMINAL=funky-terminal
+
+#	let's do some dirty checking
+if [ "$XDG_SESSION_DESKTOP" = "gnome" ]; then
+
+	x=5
+
+else
+	#	enable natural scrolling
+	xinput set-prop 11 283 1
+	#	allow tap to click
+	xinput set-prop 11 273 1
+
+fi
+

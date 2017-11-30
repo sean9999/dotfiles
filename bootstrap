@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
+#(cd ~/.dotfiles && git crypt unlock)
+
 if [ -z $1 ]; then
-    revert_to_dir=~
+    revert_to_dir=$PWD
 else
     revert_to_dir=$1
 fi

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dotfiles_add2path ~/.cargo/bin

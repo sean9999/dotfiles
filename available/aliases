@@ -1,8 +1,8 @@
 #!/bin/bash
 
-alias ll='ls -alFG'
-alias la='ls -AG'
+alias ll='ls -alFGh'
 alias l='ls -GF'
 alias g='git'
-alias d='docker'
-alias quicklook='qlmanage -p 2>/dev/null'
+alias h='h2'
+alias t='funky-terminal'
+

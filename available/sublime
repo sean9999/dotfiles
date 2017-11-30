@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dotfiles_add2path /opt/sublime_text
+
+
