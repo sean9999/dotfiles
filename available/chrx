@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#	trackpad tweaks
+xinput set-prop "Elan Touchpad" "Synaptics Finger" 5 10 50
+synclient VertScrollDelta=-80 HorizScrollDelta=-80
+# synclient PressureMotionMinZ=50
+synclient CoastingSpeed=0
+synclient MinSpeed=0.6
+synclient MaxSpeed=1
+synclient AccelFactor=0.01
