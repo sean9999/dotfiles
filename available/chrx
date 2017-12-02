@@ -2,9 +2,12 @@
 
 #	trackpad tweaks
 xinput set-prop "Elan Touchpad" "Synaptics Finger" 5 10 50
-synclient VertScrollDelta=-80 HorizScrollDelta=-80
-# synclient PressureMotionMinZ=50
+synclient VertScrollDelta=-120
+synclient HorizScrollDelta=-120
+synclient PressureMotionMinZ=50
 synclient CoastingSpeed=0
-synclient MinSpeed=0.6
-synclient MaxSpeed=1
+synclient MinSpeed=0.05
+synclient MaxSpeed=0.1
 synclient AccelFactor=0.01
+synclient VertHysteresis=1
+synclient HorizHysteresis=1
