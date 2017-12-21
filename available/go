@@ -1,9 +1,11 @@
 #!/bin/bash
 
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+
+dotfiles_add2path /usr/local/go/bin
+dotfiles_add2path /usr/local/opt/go/libexec/bin
 GOPATH=$(/usr/local/go/bin/go env GOPATH)
 GOBIN=$GOPATH/bin
 export GOPATH
 export GOBIN
-dotfiles_add2path /usr/local/go/bin
-dotfiles_add2path $GOPATH/bin 
-
