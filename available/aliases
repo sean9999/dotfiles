@@ -3,7 +3,6 @@
 alias ll='ls -alFGh'
 alias l='ls -cGF'
 alias g='git'
-alias h='h2'
 alias t='funky-terminal'
 alias ks='ls'
 

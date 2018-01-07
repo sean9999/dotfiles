@@ -268,7 +268,7 @@ function git_progenitor(){
 }
 
 function checksum(){
-	(echo "Algorithm Checksum"; for alg in "-md5" "-sha" "-sha1" "-sha256" "-sha512"; do echo $(openssl dgst $alg $1); done) | column -t
+	(echo "Algorithm Checksum"; for alg in "-md5" "-sha1" "-sha256" "-sha512"; do echo $(openssl dgst $alg $1); done) | column -t
 }
 
 function now(){

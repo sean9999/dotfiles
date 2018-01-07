@@ -42,6 +42,8 @@
 	nuke = "!echo git branch --delete $1 && echo git push --delete origin"
   # echo the full path to the repo root
 	root = rev-parse --show-toplevel
+  # create a wip (work in progress) commit based on everything new and push to upstream
+  wip = "!git add --all . && git commit -m wip && git push"
 [apply]
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
