@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+function open_tunnel() {
+	ssh -N -T -f ujump
+};
+
+function close_tunnel() {
+	echo 'close_tunnel() is not written yet. why not write it now?';
+};
+

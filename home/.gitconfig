@@ -35,7 +35,7 @@
 	# reword
 	reword = commit --amend --only -v --
   # create a new branch and a corresponding upstream branch. link the two
-  newbranch = "!f() { git branch -b $1 && git push -u origin $1 }; f"
+  newbranch = "!f() { git checkout -b $1 && git push -u origin $1; }; f"
   # pull repos along with all submodules
 	spull = "!git pull && git submodule sync --recursive && git submodule update --init --recursive"
   # delete it here and in upstream
