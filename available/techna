@@ -9,3 +9,9 @@ function close_tunnel() {
 	kill $pid;
 };
 
+function start_pap() {
+	cd ~/repos/katana/pap
+	./start_server &
+	./start_client &
+}
+
