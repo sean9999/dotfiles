@@ -1,17 +1,11 @@
 #!/bin/bash
 
-function open_tunnel() {
-	ssh -N -T -f ujump
-};
-
-function close_tunnel() {
-	pid="$(pgrep -f ujump)";
-	kill $pid;
-};
-
 function start_pap() {
-	cd ~/repos/katana/pap
-	./start_server &
-	./start_client &
+	ROOT=~/repos/katana/pap
+	cd $ROOT
+	( $ROOT/start_server.sh ) &
+	( $ROOT/start_client.sh ) &
+	( $ROOT/scripts/local/tunnels/database_stage.sh ) &
+	wait
+	notify-send "cool" "beans"
 }
-

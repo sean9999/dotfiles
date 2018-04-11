@@ -111,8 +111,3 @@
 	submoduleSummary = true
 [diff "image"]
 	command = ~/bin/git-imgdiff
-[gui]
-	editor = subl
-[user]
-	email = sean@crazyhorsecoding.com
-	name = Sean Macdonald

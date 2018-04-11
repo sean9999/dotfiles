@@ -282,3 +282,16 @@ function rand1(){
 function rand2(){
 	head -n 1 /dev/urandom | base64 | tr -d '\n+='
 }
+
+function sis(){
+    systemctl --user $1 $2 && journalctl --user -u $2 -f
+}
+
+function tun(){
+    TUNNELNAME=$1
+    ACTION=${2:-status}
+    systemctl --user $ACTION tunnel@$TUNNELNAME
+}
+
+
+
