@@ -5,8 +5,8 @@ if [ -z "$DISPLAY" ]; then
 	export EDITOR="nano"
 	export GIT_EDITOR="vim"
 else
-	export EDITOR='subl --wait --new-window'
-	export GIT_EDITOR="subl --wait --new-window"
+	export EDITOR='code -w -n'
+	export GIT_EDITOR="code -w -n"
 fi
 
 # Larger bash history (allow 32³ entries; default is 500)

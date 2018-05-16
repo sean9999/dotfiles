@@ -50,6 +50,8 @@
 	wip = "!git add --all . && git commit -m wip && git push"
 	#	what was the last branch checked out?
 	lastbranch = reflog -n1 --pretty='%cr|%gs' --grep-reflog='checkout: moving' HEAD
+	#	list commits introduced in last pull
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 [apply]
 	#	Detect whitespace errors when applying a patch
 	whitespace = fix

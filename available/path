@@ -2,3 +2,4 @@
 
 dotfiles_add2path ~/.local/opt
 dotfiles_add2path ~/.local/bin
+dotfiles_add2path "$(yarn global bin)"
