@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#BROWSER=/usr/bin/google-chrome
-BROWSER=/usr/bin/google-chrome-unstable
-export BROWSER
+#	sensible defaults
 
+#BROWSER=/usr/bin/google-chrome
+#BROWSER=/usr/bin/google-chrome-unstable
+#export BROWSER
+
+alias vim=vi

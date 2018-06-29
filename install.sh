@@ -1,12 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 #   allows us to run this script from a different dir
 INSTALL_DIR="$HOME/.dotfiles"
 cd $INSTALL_DIR
 
 #	install node.js dependencies
-npm install
-npm link 2> /dev/null || sudo -E npm link
+yarn
 
 #   @TODO: Make this idempotent
 touch ~/.bash_profile
