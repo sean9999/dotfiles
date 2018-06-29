@@ -101,8 +101,9 @@
 	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
+	#	this shortcut expects gitea to be mapped to the git server in /etc/hosts
 [url "git+ssh://git@gitea/"]
-	insteadOf = "tea:"
+	insteadOf = "fukt:"
 [push]
 	default = simple
 [log]
