@@ -119,3 +119,6 @@
 	submoduleSummary = true
 [diff "image"]
 	command = ~/bin/git-imgdiff
+[user]
+	name = Sean Macdonald
+	email = sean@crazyhorsecoding.com\n
