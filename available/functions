@@ -286,4 +286,3 @@ function rand2(){
 function sis(){
     systemctl --user $1 $2 && journalctl --user -u $2 -f
 }
-

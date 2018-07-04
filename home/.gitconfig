@@ -52,6 +52,7 @@
 	lastbranch = reflog -n1 --pretty='%cr|%gs' --grep-reflog='checkout: moving' HEAD
 	#	list commits introduced in last pull
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	timesheet = !git log --reverse --date=short --pretty=format:\"%ad - %s%d\" --date=short --date-order --author=\"$(git config user.name)\" --branches --since=\"8 weeks ago\"
 [apply]
 	#	Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -102,7 +103,7 @@
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
 	#	this shortcut expects gitea to be mapped to the git server in /etc/hosts
-[url "git+ssh://git@gitea/"]
+[url "git+ssh://git@git.fukt.ca/"]
 	insteadOf = "fukt:"
 [push]
 	default = simple

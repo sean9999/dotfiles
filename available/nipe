@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#	transparent proxy
+
+NIPE_ROOT="$HOME/repos/nipe"
+
+function nipe() {
+	cd $NIPE_ROOT
+	perl nipe.pl $1
+}
