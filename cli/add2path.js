@@ -22,8 +22,7 @@ var args = process.argv.slice(2).filter(function(arg){
 ;(function(args){
     "use strict";
     var good = function(stuff){
-        process.stdout.write( stuff.trim() );
-
+        process.stdout.write(stuff.trim());
     };
     var bad = function(stuff){
         console.trace(stuff);

@@ -6,4 +6,6 @@ alias g='git'
 alias t='funky-terminal'
 alias ks='ls'
 alias gs='git status'
+alias o='xdg-open'
+
 

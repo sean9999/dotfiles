@@ -43,7 +43,7 @@
 	#	pull repos along with all submodules
 	spull = "!git pull && git submodule update --init --recursive"
 	#	delete it here and in upstream
-	nuke = "!echo git branch --delete $1 && echo git push --delete origin"
+	nuke = "!git branch --delete $1 && git push --delete origin $1"
 	#	echo the full path to the repo root
 	root = rev-parse --show-toplevel
 	#	create a wip (work in progress) commit based on everything new and push to upstream
@@ -125,4 +125,4 @@
 	command = ~/bin/git-imgdiff
 [user]
 	name = Sean Macdonald
-	email = sean@crazyhorsecoding.com\n
+	email = sean@crazyhorsecoding.com
