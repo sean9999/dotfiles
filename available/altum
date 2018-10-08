@@ -2,7 +2,7 @@
 
 ALTUM_HOME=~/repos/altum
 
-source $ALTUM_HOME/integration-devtools/environment/altum/build/local/etc_profiled
+source $ALTUM_HOME/integration-devtools/environment/altum/built/local/etc_profiled
 
 function start_server() {
 	#nohup $ALTUM_HOME/integration-devtools/scripts/localdev/start_server 1> $ALTUM_HOME/logz/server.out.log 2> $ALTUM_HOME/logz/server.err.log & disown
