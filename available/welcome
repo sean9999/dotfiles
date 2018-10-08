@@ -1,6 +1,6 @@
 #!/bin/bash
 
-a silly welcome talking thingy
+#	a silly welcome talking thingy
 
 if [ "$(uname)" == "Linux" ]; do
 	spd-say "welcome, $USER"

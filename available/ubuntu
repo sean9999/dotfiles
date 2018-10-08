@@ -3,10 +3,3 @@
 #	keyboard key repeat rate
 #	fail silently
 xset r rate 256 32 2> /dev/null
-
-#	my zini system seems to need this
-mkdir -p ~/.dotfiles/logz
-touch ~/.dotfiles/logz/ssh-agent-id.pid
-echo >> ~/.dotfiles/logz/ssh-agent-id.pid
-eval $(ssh-agent) >> ~/.dotfiles/logz/ssh-agent-id.pid
-

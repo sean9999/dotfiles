@@ -1,4 +1,5 @@
 #!/bin/bash
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_CASK_OPTS
