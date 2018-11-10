@@ -47,12 +47,12 @@
 	#	echo the full path to the repo root
 	root = rev-parse --show-toplevel
 	#	create a wip (work in progress) commit based on everything new and push to upstream
-	wip = "!git add --all . && git commit -m wip && git push"
+	wip = "!git add --all . && git commit -m wip && git fetch origin $1 && git merge origin/$1 && git push"
 	#	what was the last branch checked out?
 	lastbranch = reflog -n1 --pretty='%cr|%gs' --grep-reflog='checkout: moving' HEAD
 	#	list commits introduced in last pull
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	timesheet = !git log --reverse --date=short --pretty=format:\"%ad - %s%d\" --date=short --date-order --author=\"$(git config user.name)\" --branches --since=\"8 weeks ago\"
+	timesheet = !git log --reverse --date=short --pretty=format:\"%ad - %s%d\" --date=short --date-order --author=\"$(git config user.name)\" --branches --since=\"7 weeks ago\"
 [apply]
 	#	Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -126,3 +126,5 @@
 [user]
 	name = Sean Macdonald
 	email = sean@crazyhorsecoding.com
+[diff "nodiff"]
+	command = /bin/true

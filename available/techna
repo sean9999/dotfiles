@@ -9,3 +9,12 @@ function start_pap() {
 	wait
 	notify-send "cool" "beans"
 }
+
+function kill_pap() {
+	sudo pkill gulp;
+	sudo pkill node;
+	sudo fuser -k 6440/tcp;
+	sudo fuser -k 6441/tcp;
+	sudo fuser -k 6442/tcp;
+	sudo fuser -k 6443/tcp;
+}

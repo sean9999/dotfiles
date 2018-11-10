@@ -1,0 +1,2 @@
+BROWSER=/usr/bin/firefox
+export BROWSER

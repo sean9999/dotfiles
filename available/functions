@@ -6,7 +6,7 @@ function get_extension(){
     printf "%s" $(basename $1 | rev | cut -f 1 -d '.' | rev)
 }
 
-# Determine size of a file or total size of a directory
+#	Determine size of a file or total size of a directory
 function fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
 		local arg=-sbh
@@ -20,7 +20,7 @@ function fs() {
 	fi
 }
 
-# Use Git’s colored diff when available
+#	Use Git’s colored diff when available
 hash git &>/dev/null
 if [ $? -eq 0 ]; then
 	function diff() {
@@ -160,18 +160,6 @@ function unquarantine() {
 	done
 }
 
-# `s` with no arguments opens the current directory in Sublime Text, otherwise
-# opens the given location
-function s() {
-	if [ $# -eq 0 ]; then
-		openthis="$(find . -maxdepth 1 -name '*.sublime-project' -print -quit)"
-		openthis=${openthis:-.}
-		subl $openthis
-	else
-		subl "$@"
-	fi
-}
-
 # open the default app
 function o() {
 	if [ "$(uname)" == "Linux" ]; then
@@ -192,75 +180,6 @@ function np() {
 	npm publish && \
 	git push origin master && \
 	git push origin master --tags
-}
-
-# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
-# the `.git` directory, listing directories first. The output gets piped into
-# `less` with options to preserve color and line numbers, unless the output is
-# small enough for one screen.
-function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX
-}
-
-function update(){
-	if [ "$(uname)" == "Linux" ]; then
-		ubuntu_update;
-	else
-		osx_update;
-	fi
-}
-
-function osx_update(){
-	cd $HOME \
-	&& sudo -v \
-	&& echo "Apple..." && softwareupdate -ia \
-	&& echo "Homebrew..." && sudo chown -R $USER:admin /usr/local && sudo chown -R $USER:admin ~/Library/Caches/Homebrew && brew update && brew upgrade && brew cleanup \
-	&& echo "Latex..." && sudo -H tlmgr update --self --all \
-	&& upgrade_python_packges \
-	&& echo "composer..." && sudo composer self-update \
-	&& echo "ngrok..." && ngrok update \
-    && echo "perl..." && sudo -H cpan update \
-    && docker-clean && cleanup;
-}
-
-function upgrade_python_packges(){
-	for package in $(pip3 list | cut -f 1 -d ' '); do
-		sudo -HE pip3 install --upgrade $package
-	done
-}
-
-function ubuntu_update(){
-	cd $HOME \
-	&& sudo -v \
-	&& echo "apt..." && sudo apt-get update && sudo apt-get -q upgrade \
-	&& echo "npm..." && sudo -H npm update -g \
-	&& echo "composer..." && sudo -H composer selfupdate \
-	&& echo "Latex..." && tlmgr update --self --all \
-	&& echo "python..." && sudo -H pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | sudo -H xargs -n1 pip install -U && sudo -H pip install --upgrade pip \
-	&& echo "python3..." && sudo -H pip3 install --upgrade pip setuptools
-}
-
-function docker-clean(){
-    if [ $(uname) = "Darwin"  ] ; then
-    	stopped_containers="$(docker ps -a -q -f status=exited)"
-    	docker kill $stopped_containers 2> /dev/null
-        docker rm -v $stopped_containers 2> /dev/null
-        docker rmi $(docker images -q -f dangling=true) 2> /dev/null
-        docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes 2> /dev/null
-    else
-        sudo docker rm -v $(sudo docker ps -a -q -f status=exited)
-        sudo docker rmi $(sudo docker images -q -f dangling=true)
-        sudo docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
-    fi
-}
-
-function cleanup(){
-	sudo -v;
-	sudo find ~ -name '*.DS_Store' -type f -ls -delete -print;
-    brew services cleanup;
-	brew cask cleanup;
-	sudo -H npm dedupe;
-	sudo rm -rvf /tmp/*
 }
 
 function git_progenitor(){
