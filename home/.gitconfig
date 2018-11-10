@@ -47,7 +47,7 @@
 	#	echo the full path to the repo root
 	root = rev-parse --show-toplevel
 	#	create a wip (work in progress) commit based on everything new and push to upstream
-	wip = "!git add --all . && git commit -m wip && git fetch origin $1 && git merge origin/$1 && git push"
+	wip = "!git add --all . && git commit -m wip && git fetch origin $(git symbolic-ref --short HEAD) && git merge origin/$(git symbolic-ref --short HEAD) && git push"
 	#	what was the last branch checked out?
 	lastbranch = reflog -n1 --pretty='%cr|%gs' --grep-reflog='checkout: moving' HEAD
 	#	list commits introduced in last pull
