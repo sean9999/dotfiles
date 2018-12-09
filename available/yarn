@@ -1,1 +1,1 @@
-dotfiles_add2path $(yarn global bin)
+dotfiles_add2path $(yarn --offline global bin)
