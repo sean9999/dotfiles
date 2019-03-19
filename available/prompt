@@ -35,10 +35,10 @@ GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWCOLORHINTS
 
 PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]"
-if git rev-parse --git-dir > /dev/null 2>&1 ; then
+if [ git rev-parse --git-dir > /dev/null 2>&1 ] ; then
 	PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]⍦\[$(p $PROMPT_COLOUR_BRANCH)\]$(__git_ps1)"
 fi
-PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]Φ\[$(p $PROMPT_COLOUR_RESET)\] "
+PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]Φ \[$(p $PROMPT_COLOUR_RESET)\]"
 
 PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
 
