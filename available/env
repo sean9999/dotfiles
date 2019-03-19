@@ -6,7 +6,7 @@ if [ -z "$DISPLAY" ]; then
 	VISUAL=$EDITOR
 else
 	mkdir -p ~/.config/fasteditor
-	EDITOR='code-insiders --disable-extensions --user-data-dir ~/.config/fasteditor -w -n'
+	EDITOR="code-insiders --zen --user-data-dir $HOME/.config/fasteditor -w -n"
 	VISUAL=$EDITOR
 fi
 
