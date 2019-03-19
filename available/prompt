@@ -27,6 +27,10 @@ GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWDIRTYSTATE
 GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUNTRACKEDFILES
+GIT_PS1_DESCRIBE_STYLE=branch
+export GIT_PS1_DESCRIBE_STYLE
+GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWUPSTREAM
 
 if git rev-parse --git-dir > /dev/null 2>&1 ; then
 	PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"\[$(p $PROMPT_COLOUR_CHAR)\] ⍦ \")\[$(p $PROMPT_COLOUR_BRANCH)\]\$(__git_ps1)\[$(p $PROMPT_COLOUR_BRANCH)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
