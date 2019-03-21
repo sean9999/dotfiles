@@ -5,7 +5,8 @@ if [ -z "$DISPLAY" ]; then
 	EDITOR="vim"
 	VISUAL=$EDITOR
 else
-	EDITOR='code -w -n'
+	mkdir -p ~/.config/fasteditor
+	EDITOR="code-insiders --zen --user-data-dir $HOME/.config/fasteditor -w -n"
 	VISUAL=$EDITOR
 fi
 

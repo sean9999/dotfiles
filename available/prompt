@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
-# Shamelessly copied from https://github.com/gf3/dotfiles
-# Screenshot: http://i.imgur.com/s0Blh.png
-
 if [ ! -f ~/.prompt_colors ]; then
 	# this is a new box, so randomize colours
 	function get_rand() {
@@ -11,7 +7,6 @@ if [ ! -f ~/.prompt_colors ]; then
 		number=$RANDOM
 		let "number %= $RANGE"
 		printf "'%s'" "\e[38;5;${number}m"
-		#printf "%s" number
 	}
 	printf "%s\n\n" "#!/bin/bash" >> ~/.prompt_colors
 	printf "PROMPT_COLOUR_USER=%s\n" "$(get_rand)" >> ~/.prompt_colors
@@ -21,26 +16,31 @@ if [ ! -f ~/.prompt_colors ]; then
 	printf "PROMPT_COLOUR_BRANCH=%s\n" $(get_rand) >> ~/.prompt_colors
 	printf "%s" "PROMPT_COLOUR_RESET='\e[0m'" >> ~/.prompt_colors
 fi
-
 source ~/.prompt_colors
 
 function p() {
 	printf "%b" $1
 }
 
-function git_friendly_rev() {
-	git name-rev --name-only --always HEAD 2> /dev/null
-}
-export git_friendly_rev
+source /usr/share/git-core/contrib/completion/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWDIRTYSTATE
+GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUNTRACKEDFILES
+GIT_PS1_DESCRIBE_STYLE=branch
+export GIT_PS1_DESCRIBE_STYLE
+GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWUPSTREAM
+GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWCOLORHINTS
 
-#	i am not boy candy
-#	export PS1="\n\[$(tput sgr0)\]\[\033[38;5;208m\][\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;33m\]\W\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;202m\]]\[$(tput sgr0)\]\[\033[38;5;15m\]\n \[$(tput sgr0)\]\[\033[38;5;200m\]\A\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;34m\]>>\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
-
-if git rev-parse --git-dir > /dev/null 2>&1 && [ $(type -t git_friendly_rev) = "function" ] ; then
-	PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \"\[$(p $PROMPT_COLOUR_CHAR)\] ⍦ \")\[$(p $PROMPT_COLOUR_BRANCH)\]\$(git_friendly_rev)\[$(p $PROMPT_COLOUR_BRANCH)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
-else
-	PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\] \[$(p $PROMPT_COLOUR_RESET)\]"
+PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]"
+if [ git rev-parse --git-dir > /dev/null 2>&1 ] ; then
+	PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]⍦\[$(p $PROMPT_COLOUR_BRANCH)\]$(__git_ps1)"
 fi
+PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]Φ \[$(p $PROMPT_COLOUR_RESET)\]"
+
 PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
+
 export PS1
 export PS2
