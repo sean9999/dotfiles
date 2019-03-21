@@ -1,10 +1,11 @@
 ### Recommended options
 
+
 # Tarsnap cache directory
-cachedir ~/.butler/tarsnap/cache
+cachedir ~/.butler/tarsnap/cache/macmini
 
 # Tarsnap key file
-keyfile ~/.butler/tarsnap/tarsnap.wafer.key
+keyfile ~/.butler/tarsnap/tarsnap.macmini.key
 
 # Don't archive files which have the nodump flag set
 nodump
