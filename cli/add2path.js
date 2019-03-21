@@ -93,7 +93,7 @@ var args = process.argv.slice(2).filter(function(arg){
                 return ( pos === arr.lastIndexOf(dir) );
             });
             scope.bigPath = deduped;
-            resolve(scope);            
+            resolve(scope);
         });
     };
     var serialize = function(scope){

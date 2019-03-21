@@ -22,23 +22,33 @@ function p() {
 	printf "%b" $1
 }
 
-source /usr/share/git-core/contrib/completion/git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWDIRTYSTATE
-GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUNTRACKEDFILES
-GIT_PS1_DESCRIBE_STYLE=branch
-export GIT_PS1_DESCRIBE_STYLE
-GIT_PS1_SHOWUPSTREAM="auto"
-export GIT_PS1_SHOWUPSTREAM
-GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_SHOWCOLORHINTS
+#source /usr/share/git-core/contrib/completion/git-prompt.sh
+#GIT_PS1_SHOWDIRTYSTATE=1
+#export GIT_PS1_SHOWDIRTYSTATE
+#GIT_PS1_SHOWUNTRACKEDFILES=1
+#export GIT_PS1_SHOWUNTRACKEDFILES
+#GIT_PS1_DESCRIBE_STYLE=branch
+#export GIT_PS1_DESCRIBE_STYLE
+#GIT_PS1_SHOWUPSTREAM="auto"
+#export GIT_PS1_SHOWUPSTREAM
+#GIT_PS1_SHOWCOLORHINTS=1
+#export GIT_PS1_SHOWCOLORHINTS
+
+HOME_PROMPT="⌂"
+NOTHOME_PROMPT="༓"
+REPO_PROMPT="☼"
+if [[ $PWD/ = $HOME/* ]]; then
+	THE_PROMPT=$HOME_PROMPT
+else
+	THE_PROMPT=$NOTHOME_PROMPT
+fi
+
 
 PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]"
-if [ git rev-parse --git-dir > /dev/null 2>&1 ] ; then
-	PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]⍦\[$(p $PROMPT_COLOUR_BRANCH)\]$(__git_ps1)"
-fi
-PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]Φ \[$(p $PROMPT_COLOUR_RESET)\]"
+#if git rev-parse --git-dir > /dev/null 2>&1; then
+#	PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]⍦\[$(p $PROMPT_COLOUR_BRANCH)\]$(__git_ps1)"
+#fi
+PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]${THE_PROMPT} \[$(p $PROMPT_COLOUR_RESET)\]"
 
 PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
 
