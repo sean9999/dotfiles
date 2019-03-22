@@ -7,6 +7,7 @@ if [ ! -f ~/.prompt_colors ]; then
 		number=$RANDOM
 		let "number %= $RANGE"
 		printf "'%s'" "\e[38;5;${number}m"
+		#printf "%s" number
 	}
 	printf "%s\n\n" "#!/bin/bash" >> ~/.prompt_colors
 	printf "PROMPT_COLOUR_USER=%s\n" "$(get_rand)" >> ~/.prompt_colors
@@ -17,40 +18,18 @@ if [ ! -f ~/.prompt_colors ]; then
 	printf "%s" "PROMPT_COLOUR_RESET='\e[0m'" >> ~/.prompt_colors
 fi
 source ~/.prompt_colors
-
 function p() {
 	printf "%b" $1
 }
-
-#source /usr/share/git-core/contrib/completion/git-prompt.sh
-#GIT_PS1_SHOWDIRTYSTATE=1
-#export GIT_PS1_SHOWDIRTYSTATE
-#GIT_PS1_SHOWUNTRACKEDFILES=1
-#export GIT_PS1_SHOWUNTRACKEDFILES
-#GIT_PS1_DESCRIBE_STYLE=branch
-#export GIT_PS1_DESCRIBE_STYLE
-#GIT_PS1_SHOWUPSTREAM="auto"
-#export GIT_PS1_SHOWUPSTREAM
-#GIT_PS1_SHOWCOLORHINTS=1
-#export GIT_PS1_SHOWCOLORHINTS
-
-HOME_PROMPT="⌂"
-NOTHOME_PROMPT="༓"
-REPO_PROMPT="☼"
-if [[ $PWD/ = $HOME/* ]]; then
-	THE_PROMPT=$HOME_PROMPT
-else
-	THE_PROMPT=$NOTHOME_PROMPT
-fi
-
-
-PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w\[$(p $PROMPT_COLOUR_DIR)\]"
-#if git rev-parse --git-dir > /dev/null 2>&1; then
-#	PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]⍦\[$(p $PROMPT_COLOUR_BRANCH)\]$(__git_ps1)"
-#fi
-PS1="${PS1} \[$(p $PROMPT_COLOUR_CHAR)\]${THE_PROMPT} \[$(p $PROMPT_COLOUR_RESET)\]"
-
+source ~/.dotfiles/home/git-prompt.sh
+function git_stuff() {
+	if git status --porcelain &>/dev/null; then
+		echo " $(p $PROMPT_COLOUR_CHAR)⍦ $(p $PROMPT_COLOUR_BRANCH)$(__git_ps1)"
+	fi
+}
+PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w"
+PS1="${PS1}"'$(git_stuff)'
+PS1="${PS1}\[$(p $PROMPT_COLOUR_CHAR)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
 PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
-
 export PS1
 export PS2
