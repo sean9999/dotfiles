@@ -1,0 +1,4 @@
+#Get rid of previous syndaemon
+killall syndaemon
+#More aggressive behavior, allow for mod+key combos, enable mouse movements
+syndaemon -i 0.2 -K -t -d
