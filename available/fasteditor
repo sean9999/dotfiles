@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function fastedit() {
+	flatpak run com.github.Cogitri.gxi "$@"
+}
+#export fastedit
+
+alias fasteditor=fastedit
+

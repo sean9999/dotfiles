@@ -24,10 +24,10 @@ function p() {
 source ~/.dotfiles/home/git-prompt.sh
 function git_stuff() {
 	if git status --porcelain &>/dev/null; then
-		echo " $(p $PROMPT_COLOUR_CHAR)⍦ $(p $PROMPT_COLOUR_BRANCH)$(__git_ps1)"
+		echo " $(p $PROMPT_COLOUR_CHAR)⍦$(p $PROMPT_COLOUR_BRANCH)$(__git_ps1)"
 	fi
 }
-PS1="\n\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w"
+PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w"
 PS1="${PS1}"'$(git_stuff)'
 PS1="${PS1}\[$(p $PROMPT_COLOUR_CHAR)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
 PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"
