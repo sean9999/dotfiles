@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# Make VS Code the default editor if we're in a gui, otherwise vim
+#	Use fastedit if we're in a gui, otherwise vim
 if [ -z "$DISPLAY" ]; then
 	EDITOR="vim"
 	VISUAL=$EDITOR
 else
-	mkdir -p $HOME/.config/fasteditor
-	EDITOR="code-insiders --zen --user-data-dir $HOME/.config/fasteditor -w -n"
+	EDITOR=fasteditor
 	VISUAL=$EDITOR
 fi
-
 export EDITOR
 export VISUAL
 
@@ -29,3 +27,7 @@ export LESS_TERMCAP_md="$ORANGE"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
+
+#	Qt High DPI
+QT_SCALE_FACTOR=2
+export QT_SCALE_FACTOR
