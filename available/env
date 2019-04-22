@@ -5,7 +5,7 @@ if [ -z "$DISPLAY" ]; then
 	EDITOR="vim"
 	VISUAL=$EDITOR
 else
-	EDITOR=fasteditor
+	EDITOR=fastedit
 	VISUAL=$EDITOR
 fi
 
