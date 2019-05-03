@@ -7,6 +7,9 @@ cd $INSTALL_DIR
 #	install node.js dependencies
 yarn
 
+#	make executable
+yarn link
+
 #   @TODO: Make this idempotent
 touch ~/.bash_profile
 echo >> ~/.bash_profile
