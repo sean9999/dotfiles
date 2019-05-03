@@ -1,0 +1,6 @@
+#!/bin/bash
+
+##	is located at ~/.local/bin/fastedit
+
+alias fasteditor=fastedit
+alias fed=fastedit
