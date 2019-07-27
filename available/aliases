@@ -1,11 +1,11 @@
 #!/bin/bash
 
-alias ll='ls -alFGh'
-alias l='ls -cGFh'
+alias ll='exa --long --git'
+alias l='exa'
 alias g='git'
 alias t='funky-terminal'
-alias ks='ls'
+alias ks='exa'
 alias gs='git status'
 alias o='xdg-open'
-
 alias sis="systemctl --user"
+alias k=kubectl

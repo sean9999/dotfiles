@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+eval $(minikube docker-env)
+eval $(kubectl completion bash)
+alias k=kubectl
+alias m=minikube
+
