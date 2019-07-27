@@ -27,6 +27,8 @@ function git_stuff() {
 		echo " $(p $PROMPT_COLOUR_CHAR)⍦$(p $PROMPT_COLOUR_BRANCH)$(__git_ps1)"
 	fi
 }
+export git_stuff
+
 PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w"
 PS1="${PS1}"'$(git_stuff)'
 PS1="${PS1}\[$(p $PROMPT_COLOUR_CHAR)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"

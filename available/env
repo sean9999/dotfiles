@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Make VS Code the default editor if we're in a gui, otherwise vim
+#	Use fastedit if we're in a gui, otherwise vim
 if [ -z "$DISPLAY" ]; then
 	EDITOR="vim"
 	VISUAL=$EDITOR
 else
-	#mkdir -p $HOME/.config/fasteditor
-	#EDITOR="code --zen --user-data-dir $HOME/.config/fasteditor -w -n"
-	#VISUAL=$EDITOR
 	EDITOR=fastedit
 	VISUAL=$EDITOR
 fi
@@ -15,24 +12,28 @@ fi
 export EDITOR
 export VISUAL
 
-# Larger bash history (allow 32³ entries; default is 500)
+#	Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
-# Prefer US English and use UTF-8
-#export LANG="en_US"
-#export LC_ALL="en_US.UTF-8"
-
 LANG=C.UTF-8
 LC_ALL=C.UTF-8
 export LANG
 export LC_ALL
 
-# Highlight section titles in manual pages
+#	Prefer US English and use UTF-8
+#export LANG="en_US"
+#export LC_ALL="en_US.UTF-8"
+
+#	Highlight section titles in manual pages
 export LESS_TERMCAP_md="$ORANGE"
 
-# Don’t clear the screen after quitting a manual page
+#	Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
+
+#	Qt High DPI
+QT_SCALE_FACTOR=2
+export QT_SCALE_FACTOR
