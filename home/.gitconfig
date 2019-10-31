@@ -1,58 +1,7 @@
 [include]
 	path = ~/.gitconfig-user
 	path = ~/.gitconfig-credential
-[alias]
-	#	status
-	s = status
-	#	pretty diff
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat --ignore-all-space --ignore-space-at-eol --ignore-space-change"
-	#	pretty log
-	l = log --graph -n 64 --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
-	#	List commits in short form, with colors and branch/tag annotations
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-	#	List commits showing changed file
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-	#	`git di $number` shows the diff between the state `$number` revisions ago and the current state
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	#	upstream diff
-	ud = log "@{u}...HEAD" --graph --decorate --left-right --boundary --pretty=format:'%Cred%h%Creset %d %s %Cgreen(%cr)%Creset %Cblue[%an]%Creset' --abbrev-commit --date=relative
-	#	pull and then push.
-	pp = !"git pull --all; git remote | xargs -L1 git push --all"
-	#	add all new changes and then commit
-	ac = "!git add --all && git commit"
-	#	list tags
-	tags = tag -l
-	#	list branches
-	branches = branch -a --sort=-committerdate
-	#	list remotes
-	remotes = remote -v
-	#	Find branches containing commit
-	fb = "!f() { git branch -a --contains $1; }; f"
-	#	Find tags containing commit
-	ft = "!f() { git describe --always --contains $1; }; f"
-	#	Find commits by source code
-	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-	#	Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-	#	Remove branches that have already been merged with master
-	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
-	#	reword
-	reword = commit --amend --only -v --
-	#	create a new branch and a corresponding upstream branch. link the two
-	newbranch = "!f() { git checkout -b $1 && git push -u origin $1; }; f"
-	#	pull repos along with all submodules
-	spull = "!git pull && git submodule update --init --recursive"
-	#	delete it here and in upstream
-	nuke = "!git branch --delete $1 && git push --delete origin $1"
-	#	echo the full path to the repo root
-	root = rev-parse --show-toplevel
-	#	create a wip (work in progress) commit based on everything new and push to upstream
-	wip = "!git add --all . && git commit -m wip && git fetch origin $(git symbolic-ref --short HEAD) && git merge origin/$(git symbolic-ref --short HEAD) && git push"
-	#	what was the last branch checked out?
-	lastbranch = reflog -n1 --pretty='%cr|%gs' --grep-reflog='checkout: moving' HEAD
-	#	list commits introduced in last pull
-	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	timesheet = !git log --reverse --date=short --pretty=format:\"%ad - %s%d\" --date=short --date-order --author=\"$(git config user.name)\" --branches --since=\"7 weeks ago\"
+	path = ~/.gitconfig-alias
 [apply]
 	#	Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -124,8 +73,5 @@
 	submoduleSummary = true
 [diff "image"]
 	command = ~/bin/git-imgdiff
-[user]
-	name = Sean Macdonald
-	email = sean@crazyhorsecoding.com
 [diff "nodiff"]
 	command = /bin/true

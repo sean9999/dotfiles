@@ -2,7 +2,7 @@
 
 alias ll='exa --long --git'
 alias l='exa'
-alias ls=exa
+alias ls='exa'
 alias g='git'
 alias t='funky-terminal'
 alias ks='exa'
@@ -10,7 +10,7 @@ alias gs='git status'
 alias o='xdg-open'
 alias sis="systemctl --user"
 alias k=kubectl
-alias cat=bat
-
+alias cat='bat --plain'
 alias disks='df -h -T -x squashfs'
-alias diskspace=disks
+alias nano=nvim
+
