@@ -28,11 +28,12 @@ export LC_ALL
 #export LC_ALL="en_US.UTF-8"
 
 #	Highlight section titles in manual pages
-export LESS_TERMCAP_md="$ORANGE"
+CYAN=$(tput bold; tput setaf 6)
+export LESS_TERMCAP_md="$CYAN"
 
 #	Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
 #	Qt High DPI
-QT_SCALE_FACTOR=2
-export QT_SCALE_FACTOR
+#QT_SCALE_FACTOR=1
+#export QT_SCALE_FACTOR
