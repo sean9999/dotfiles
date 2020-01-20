@@ -87,9 +87,6 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[merge]
-	#	Include summaries of merged commits in newly created merge commit messages
-	log = true
 [url "git@github.com:"]
 	insteadOf = "gh:"
 	pushInsteadOf = "github:"
@@ -122,10 +119,21 @@
 	process = git-lfs filter-process
 [status]
 	submoduleSummary = true
-[diff "image"]
-	command = ~/bin/git-imgdiff
 [user]
 	name = Sean Macdonald
-	email = sean@crazyhorsecoding.com
+	email = sean.macdonald@rmp.uhn.ca
+
+
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	cmd = flatpak run org.gnome.meld "$LOCAL" "$REMOTE"
+[merge]
+	log = true
+	tool = meld
+[diff "image"]
+	command = ~/bin/git-imgdiff
 [diff "nodiff"]
 	command = /bin/true
