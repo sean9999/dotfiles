@@ -148,3 +148,8 @@ function sis(){
 function copy(){
 	echo "$@" | xclip -selection clipboard
 }
+
+function addr(){
+	# get the address of node on the LAN, advertised via avahi
+	avahi-resolve-host-name -4 $1.local
+}

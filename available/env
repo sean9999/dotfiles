@@ -2,13 +2,12 @@
 
 #	Use fastedit if we're in a gui, otherwise vim
 if [ -z "$DISPLAY" ]; then
-	EDITOR="vim"
+	EDITOR="nvim"
 	VISUAL=$EDITOR
 else
 	EDITOR=fastedit
 	VISUAL=$EDITOR
 fi
-
 export EDITOR
 export VISUAL
 
@@ -16,19 +15,25 @@ export VISUAL
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
-# Make some commands not show up in history
+#	Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+LANG=C.UTF-8
+LC_ALL=C.UTF-8
+export LANG
+export LC_ALL
 
 #	Prefer US English and use UTF-8
 #export LANG="en_US"
 #export LC_ALL="en_US.UTF-8"
 
 #	Highlight section titles in manual pages
-export LESS_TERMCAP_md="$ORANGE"
+CYAN=$(tput bold; tput setaf 6)
+export LESS_TERMCAP_md="$CYAN"
 
 #	Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
 #	Qt High DPI
-QT_SCALE_FACTOR=2
-export QT_SCALE_FACTOR
+#QT_SCALE_FACTOR=1
+#export QT_SCALE_FACTOR
