@@ -1,0 +1,9 @@
+#!/bin/bash
+
+alias k=kubectl
+
+#source $HOME/.kube/completion.bash.inc
+
+##	Here's UHN DataLake proj
+KUBECONFIG=$KUBECONFIG:~/.kube/rds1
+export KUBECONFIG

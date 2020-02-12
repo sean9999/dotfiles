@@ -1,3 +1,6 @@
 #!/bin/bash
 
-dotfiles_add2path /Applications/Postgres.app/Contents/Versions/9.4/bin
+#dotfiles_add2path /Applications/Postgres.app/Contents/Versions/9.4/bin
+
+dotfiles_add2path /usr/local/opt/libpq/bin
+

@@ -8,4 +8,8 @@ alias ks='ls'
 alias gs='git status'
 alias o='xdg-open'
 
+EDITOR='nvim'
+export EDITOR
+alias nano='nvim'
+
 alias sis="systemctl --user"
