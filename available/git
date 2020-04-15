@@ -2,8 +2,7 @@
 
 GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
-#	Default git editor is same as system-wide default editor
-GIT_EDITOR=$EDITOR
+GIT_EDITOR=nvim
 
 export GIT_DISCOVERY_ACROSS_FILESYSTEM
 export GIT_EDITOR
