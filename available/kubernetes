@@ -3,7 +3,6 @@
 source <(kubectl completion bash)
 
 alias k="kubectl"
-alias kogs="kubectl get events -A --watch"
-
+alias kogs="k get events -A --field-selector 'reason!=DNSConfigForming' --watch"
 complete -o default -F __start_kubectl k
 
