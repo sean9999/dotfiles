@@ -29,7 +29,10 @@ function git_stuff() {
 }
 export git_stuff
 
-PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]\h \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w"
+PRETTY_HOSTNAME="$(hostnamectl --pretty)"
+
+
+PS1="\[$(p $PROMPT_COLOUR_USER)\]\u \[$(p $PROMPT_COLOUR_CHAR)\]@ \[$(p $PROMPT_COLOUR_HOST)\]${PRETTY_HOSTNAME} \[$(p $PROMPT_COLOUR_CHAR)\]∈ \[$(p $PROMPT_COLOUR_DIR)\]\w"
 PS1="${PS1}"'$(git_stuff)'
 PS1="${PS1}\[$(p $PROMPT_COLOUR_CHAR)\]\n\$ \[$(p $PROMPT_COLOUR_RESET)\]"
 PS2="\n\[$(p $PROMPT_COLOUR_CHAR)\]→ \[$(p $PROMPT_COLOUR_RESET)\]"

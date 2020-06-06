@@ -1,14 +1,10 @@
 #!/bin/bash
 
 #   allows us to run this script from a different dir
-INSTALL_DIR="$HOME/.dotfiles"
-cd $INSTALL_DIR
 
-#	install node.js dependencies
-yarn
+npm install
 
-#	make executable
-yarn link
+sudo npm link
 
 #   @TODO: Make this idempotent
 touch ~/.bash_profile

@@ -1,6 +1,9 @@
 #!/bin/bash
 
-alias k=kubectl
+source <(kubectl completion bash)
 
-#source $HOME/.kube/completion.bash.inc
+alias k="kubectl"
+alias kogs="kubectl get events -A --watch"
+
+complete -o default -F __start_kubectl k
 
