@@ -37,21 +37,8 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-	insteadOf = "github:"
-[url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
-[url "git://gist.github.com/"]
-	insteadOf = "gist:"
-	#	this shortcut expects gitea to be mapped to the git server in /etc/hosts
-[url "git+ssh://git@git.fukt.ca/"]
-	insteadOf = "fukt:"
+[url "git@github.com/sean9999:"]
+	insteadOf = https://github.com/sean9999/
 [push]
 	default = simple
 [log]
@@ -86,3 +73,7 @@
 [user]
 	name = Sean Macdonald
 	email = sean.r.macdonald@gmail.com
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false

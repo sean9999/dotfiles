@@ -1,11 +1,7 @@
 #!/bin/bash
 
-#	add kitty terminal to path
-#	https://sw.kovidgoyal.net/kitty/index.html
-
 TERMINAL=kitty
 export TERMINAL
 
-dotfiles_add2path	~/.local/kitty.app/bin
+source <(kitty + complete setup bash)
 
-source <(~/.local/kitty.app/bin/kitty + complete setup bash)

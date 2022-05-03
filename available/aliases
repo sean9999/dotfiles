@@ -7,4 +7,5 @@ alias k=kubectl
 alias disks='df -h -T -x squashfs'
 alias diskspace=disks
 alias nano=nvim
+alias cat='bat --theme="Monokai Extended Origin" --style=plain --tabs=0'
 

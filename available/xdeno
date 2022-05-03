@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DENO_INSTALL="/home/seanmacdonald/.deno"
+dotfiles_add2path $DENO_INSTALL/bin
+
+

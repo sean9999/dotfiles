@@ -1,13 +1,7 @@
 #!/bin/bash
 
-#	Use fastedit if we're in a gui, otherwise vim
-if [ -z "$DISPLAY" ]; then
-	EDITOR="nvim"
-	VISUAL=$EDITOR
-else
-	EDITOR=fastedit
-	VISUAL=$EDITOR
-fi
+EDITOR=nvim
+VISUAL=$EDITOR
 export EDITOR
 export VISUAL
 

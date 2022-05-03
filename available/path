@@ -2,6 +2,5 @@
 
 dotfiles_add2path /usr/local/sbin
 dotfiles_add2path /usr/local/bin
-dotfiles_add2path ~/.local/opt
 dotfiles_add2path ~/.local/bin
-#dotfiles_add2path "$(yarn global bin)"
+#dotfiles_add2path /opt/android/platform-tools
