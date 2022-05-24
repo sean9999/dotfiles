@@ -8,6 +8,7 @@ touch $RCFILE
 ##  add relevant symlinks
 ln -fs $PWD/available $DOTFILES_DIR/available
 ln -fs $PWD/enabled $DOTFILES_DIR/enabled
+ln -fs $PWD/home $DOTFILES_DIR/home
 ln -fs $PWD/README.md $DOTFILES_DIR/README.md
 ln -fs $PWD/bootstrap $DOTFILES_DIR/bootstrap
 
