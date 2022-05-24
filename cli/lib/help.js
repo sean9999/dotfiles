@@ -1,24 +1,18 @@
-import { readdir, readFile } from 'fs';
+import { promises } from 'fs';
+
+const isHelpFile = function (filename) {
+	var pattern = /^help(\.\w+){1,2}\.txt$/;
+	return filename.match(pattern);
+};
 
 const func = async (submodulename, args, vars) => {
-	return new Promise((resolve, reject) => {
-		var topic = args[0] || 'general';
-		var isHelpFile = function (filename) {
-			var pattern = /^help(\.\w+){1,2}\.txt$/;
-			return filename.match(pattern);
-		};
-		readdir(vars.rootDirectory() + vars.helpRoot, function (err, files) {
-			var helpFiles = files.filter(isHelpFile).filter(function (filename) {
-				var pattern = new RegExp('\.' + topic + '\.');
-				return (filename.match(topic));
-			});
-			var goodie = helpFiles.pop() || 'help.general.txt';
-			readFile(vars.rootDirectory() + vars.helpRoot + '/' + goodie, { encoding: "utf8" }, function (err, data) {
-				if (err) reject(err);
-				resolve(data);
-			});
-		});
-	});
+	//const allFiles = await promises.readdir(`${vars.__dirname}/assets`);
+	//const helpFiles = allFiles.filter(isHelpFile);
+	//const readMe = 'help.general.txt';
+	//return promises.readFile(`${vars.__dirname}/assets/${readMe}`,{encoding: "utf8"});
+
+	return process.cwd();
+
 };
 
 export default func;

@@ -1,13 +1,11 @@
-"use strict";
-
 /**
  * Edit a file using the user's default text editor
  */
 
-var child_process = require('child_process'),
-	fancy = require('../fancy.js');
+import { spawn } from 'child_process';
+import fancy from '../fancy.js';
 
-module.exports 	= function(submodulename,submoduleargs,vars) {
+const func = async (submodulename,submoduleargs,vars) => {
 	return new Promise(function(resolve,reject){
 		var editor = process.env.EDITOR || (function(os){
 			var opener = 'open';
@@ -16,10 +14,12 @@ module.exports 	= function(submodulename,submoduleargs,vars) {
 			}
 			return opener;
 		})(process.platform);
-		var filepath= '~/.dotfiles/available/'.replace('~',process.env.HOME) + submoduleargs[0];
+		var filepath= `${vars.rootDirectory()}/available/${submoduleargs[0]}`;
 		var exec	= (editor + ' ' + filepath).split(/\s+/g);
-		var options	= {};
-		var child 	= child_process.spawn( exec.shift(), exec, options );
+		var options	= {
+			stdio: 'inherit'
+		};
+		var child 	= spawn( exec.shift(), exec, options );
 		child.on('close', function (code) {
 			var msg = 'child process exited with code ' + code;
 			if (code === 0) {
@@ -31,3 +31,5 @@ module.exports 	= function(submodulename,submoduleargs,vars) {
 		});
 	});
 };
+
+export default func;
