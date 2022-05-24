@@ -6,6 +6,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"private": false,
 	"scripts": {
 		"postinstall": "./postinstall.sh"
 	},
