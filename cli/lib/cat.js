@@ -1,6 +1,6 @@
 /**
  * Simply outputs the file (like the unix cat).
- * This is of course tantamount to endorsing cat abuse, but we forgive ourselves
+ * 🐱
  * @param {String} [fileName] [The name of the file to read. We first try the available/ directory, and if nothing is found, we look in the /home dir. If still nothing is found, return error]
  * @returns {Promise} [resolves with file contents (text), rejects with fs error] 
  */

@@ -1,10 +1,10 @@
 {
   "name": "@code_monk/dotfiles",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "a dotfile manager",
   "type": "module",
   "scripts": {
-    "test": "grunt test cli/test"
+    "postinstall": "./postinstall.sh"
   },
   "bin": {
     "eotfiles": "cli.sh"
@@ -18,7 +18,8 @@
     "management",
     "utility",
     "bash",
-    "shell"
+    "shell",
+    "terminal"
   ],
   "author": "Sean Macdonald <sean@crazyhorsecoding.com>",
   "license": "ISC",
@@ -33,5 +34,8 @@
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=13.2.0"
   }
 }
