@@ -6,11 +6,11 @@ mkdir -p $DOTFILES_DIR
 touch $RCFILE
 
 ##  add relevant symlinks
-ln -fs $PWD/available $DOTFILES_DIR/available
-ln -fs $PWD/enabled $DOTFILES_DIR/enabled
-ln -fs $PWD/home $DOTFILES_DIR/home
-ln -fs $PWD/README.md $DOTFILES_DIR/README.md
-ln -fs $PWD/bootstrap $DOTFILES_DIR/bootstrap
+ln -nfs $PWD/available $DOTFILES_DIR/available
+ln -nfs $PWD/enabled $DOTFILES_DIR/enabled
+ln -nfs $PWD/home $DOTFILES_DIR/home
+ln -nfs $PWD/README.md $DOTFILES_DIR/README.md
+ln -nfs $PWD/bootstrap $DOTFILES_DIR/bootstrap
 
 #   add source command to .bashrc
 sed -i '/^#.dotfiles/,/^$/d' $RCFILE

@@ -1,41 +1,37 @@
 {
-  "name": "@code_monk/dotfiles",
-  "version": "2.0.0",
-  "description": "a dotfile manager",
-  "type": "module",
-  "scripts": {
-    "postinstall": "./postinstall.sh"
-  },
-  "bin": {
-    "eotfiles": "cli.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/code_monk/dotfiles.git"
-  },
-  "keywords": [
-    "dotfiles",
-    "management",
-    "utility",
-    "bash",
-    "shell",
-    "terminal"
-  ],
-  "author": "Sean Macdonald <sean@crazyhorsecoding.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/code_monk/dotfiles/issues"
-  },
-  "homepage": "https://gitlab.com/code_monk/dotfiles#readme",
-  "dependencies": {
-    "bash-color": "0.0.3",
-    "chalk": "^4.1.2",
-    "columnizer": "~0.1.0"
-  },
-  "devDependencies": {
-    "@types/chalk": "^2.2.0"
-  },
-  "engines": {
-    "node": ">=13.2.0"
-  }
+	"name": "@code_monk/dotfiles",
+	"version": "2.0.0",
+	"description": "a dotfile manager",
+	"type": "module",
+	"scripts": {
+		"postinstall": "./postinstall.sh"
+	},
+	"bin": {
+		"dotfiles": "cli.sh"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://gitlab.com/code_monk/dotfiles.git"
+	},
+	"keywords": [
+		"dotfiles",
+		"management",
+		"utility",
+		"bash",
+		"shell",
+		"terminal"
+	],
+	"author": "Sean Macdonald <sean@crazyhorsecoding.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://gitlab.com/code_monk/dotfiles/issues"
+	},
+	"homepage": "https://gitlab.com/code_monk/dotfiles#readme",
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"columnizer": "~0.1.0"
+	},
+	"engines": {
+		"node": ">=13.2.0"
+	}
 }

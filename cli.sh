@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-source vars.sh
-
-node --trace-warnings cli/main.js $@
+node --no-warnings --title="dotfiles" cli/main.js $@
