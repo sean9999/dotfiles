@@ -3,6 +3,9 @@
 	"version": "2.0.0",
 	"description": "a dotfile manager",
 	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"postinstall": "./postinstall.sh"
 	},
