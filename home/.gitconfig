@@ -8,7 +8,6 @@
 [core]
 	#	Use custom `.gitignore` and `.gitattributes`
 	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
 	#	Treat spaces before tabs, lines that are indented with 8 or more spaces, and
 	#	all kinds of trailing whitespace as an error.
 	#	[default] trailing-space: looks for spaces at the end of a line
@@ -37,8 +36,6 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-[url "git@github.com/sean9999:"]
-	insteadOf = https://github.com/sean9999/
 [push]
 	default = simple
 [log]
@@ -69,10 +66,6 @@
 	command = ~/bin/git-imgdiff
 [diff "nodiff"]
 	command = /bin/true
-
-[user]
-	name = Sean Macdonald
-	email = sean.r.macdonald@gmail.com
 [init]
 	defaultBranch = master
 [pull]

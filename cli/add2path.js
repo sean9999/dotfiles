@@ -13,7 +13,7 @@
  * If any component of $PATH is not a valid directory, remove it, emit a warning, and continue processing.
  **/
 
-var fs = require('fs');
+import { access, R_OK } from 'fs';
 //  remove zero-length args
 var args = process.argv.slice(2).filter(function(arg){
     return (arg);
@@ -70,7 +70,7 @@ var args = process.argv.slice(2).filter(function(arg){
     };
     var dirExists = function(dir) {
         return new Promise(function(resolve,reject) {
-            fs.access(dir,fs.R_OK,function(err) {
+            access(dir,R_OK,function(err) {
                 if (err) {
                     resolve(false);
                 } else {

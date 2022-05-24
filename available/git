@@ -1,28 +1,14 @@
 #!/bin/bash
 
 GIT_DISCOVERY_ACROSS_FILESYSTEM=1
-
 GIT_EDITOR=nvim
-
 export GIT_DISCOVERY_ACROSS_FILESYSTEM
 export GIT_EDITOR
 
-#	bash completion
-source ~/.git-completion.bash
+source /etc/bash_completion.d/*git*
 
-#	helper functions
-##	convert log history to csv
+#	convert log history to csv
+#	useful for invoices, etc
 function git_make_csv() {
 	git log --date=local --pretty=format:"%h%x09%an%x09%ad%x09%s" > commits.$1.tsv;
 };
-
-function timesheet_katana() {
-  repo_root=~/repos/katana
-  repos="pap pap/scripts pap/services/client pap/services/server pap/services/bridge";
-  for r in $repos; do
-    (
-      cd $repo_root/$r \
-      && git log --date=local --pretty=format:"%h%x09%an%x09%ad%x09%s" >> $repo_root/commits/000.tsv;
-    );
-  done
-}

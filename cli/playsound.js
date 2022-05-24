@@ -6,7 +6,8 @@
  * @returns { nothing } undefined
  */
 
-var spawn = require('child_process').spawn;
+import { spawn } from 'child_process';
+
 const CLIP_ROOT = __dirname + '/assets/';
 
 var darwinParams = function(clip_path) {
@@ -74,4 +75,4 @@ var playsound = function(clipname){
 	return;
 };
 
-module.exports = playsound;
+export default playsound;

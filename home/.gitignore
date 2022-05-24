@@ -1,8 +1,9 @@
-*.pyc
-.DS_Store
-Desktop.ini
-Thumbs.db
-.Spotlight-V100
-.Trashes
-*.sublime-*
+##  assume that anything with "private" in the name should not be commited
+##  and some common artefacts
 
+*.private
+private.*
+*.private.*
+
+.DS_Store
+*.log

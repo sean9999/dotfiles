@@ -1,46 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-#(cd ~/.dotfiles && git crypt unlock)
+source vars.sh
 
-if [ -z $1 ]; then
-    revert_to_dir=$PWD
-else
-    revert_to_dir=$1
-fi
-cd ~/.dotfiles
-if [ -d ~/.dotfiles ]; then
-	#	set up the shell environment
-	for file in ~/.dotfiles/enabled/*; do
-		[ -r "$file" ] && source "$file"
-		[ -r "$file.private" ] && source "$file.private"
-	done
-	#	home dir files
-	for dotfile in `find ~/.dotfiles/home -type f`; do
-		if [ -r "$dotfile" ]; then
-			localfile=${dotfile/\/\.dotfiles\/home}
-			archivedir=~/.dotfiles/archive/"$(git rev-parse HEAD)"/home
-			archivefile=$archivedir/"$(basename $localfile)"
-			if [ -h "$localfile" ] && [ `readlink $localfile` == "$dotfile" ]; then
-				x=5;
-				# the file exists but is not a real file
-			else
-				mkdir -p $archivedir
-				if [ -r $localfile ]; then
-					mv $localfile $archivefile
-				fi
-				ln -s $dotfile $localfile
-			fi
-		fi
-	done
-	#	delete broken symlinks
-	find ~ -maxdepth 1 -type l ! -exec test -r {} \; -delete
-fi
-cd $revert_to_dir
-#	cleanup
-unset file
-unset dotfile
-unset localfile
-unset archivefile
-unset archivedir
-unset x
-unset revert_to_dir
+for file in $DOTFILES_DIR/enabled/*; do
+	[ -r "$file" ] && source "$file"
+done

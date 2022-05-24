@@ -7,16 +7,16 @@
  * @returns {Promise} [resolves with file contents (text), rejects with fs error] 
  */
 
-var fs = require('fs');
+import { readFile, exists as _exists } from 'fs';
 
-module.exports = function(modulename,args,vars){
+export default function(modulename,args,vars){
 	return new Promise(function(resolve,reject){
 		var fyle	= args[0],
 			path1	= vars.rootDirectory() + '/available/' + fyle,
 			path2	= process.env.HOME+'/'+fyle,
 			opts 	= {encoding: "utf8"},
 			catTheFile = function(fullpath){
-				fs.readFile(fullpath,opts,function(err,contents){
+				readFile(fullpath,opts,function(err,contents){
 					if (err) {
 						reject(err);
 					}
@@ -26,11 +26,11 @@ module.exports = function(modulename,args,vars){
 		if ( !(args.length) || !(args[0].length) ) {
 			reject(Error('Not enough information'));
 		}
-		fs.exists(path1,function(exists){
+		_exists(path1,function(exists){
 			if (exists) {
 				catTheFile(path1);
 			} else {
-				fs.exists(path2,function(exists){
+				_exists(path2,function(exists){
 					if (exists) {
 						catTheFile(path2);
 					} else {

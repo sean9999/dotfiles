@@ -1,20 +1,20 @@
 "use strict";
 
-var fs = require('fs'),
-	fancy = require('../fancy.js');
+import { unlink, exists as _exists } from 'fs';
+import fancy from '../fancy.js';
 
-module.exports = function(submodulename,args,vars){
+export default function(submodulename,args,vars){
 	return new Promise(function(resolve,reject){
 		if (args && typeof args === 'object' && "length" in args && args.length ) {
 			var fullpath = vars.rootDirectory() + '/enabled/' + args[0];
 			var fullpath2= vars.rootDirectory() + '/enabled/' + args[0] + '.private';
-			fs.unlink(fullpath,function(err){
+			unlink(fullpath,function(err){
 				if (err) {
 					reject(err);
 				} else {
-					fs.exists(fullpath2,function(exists){
+					_exists(fullpath2,function(exists){
 						if (exists) {
-							fs.unlink(fullpath2,function(err){
+							unlink(fullpath2,function(err){
 								if (err) {
 									reject(err);
 								} else {

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-#	dynamically change colour scheme in terminals
-
-dotfiles_add2path "$HOME/.dynamic-colors/bin"
-source $HOME/.dynamic-colors/completions/dynamic-colors.bash

@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #	trackpad tweaks
+#   useful on some Chromebooks with Linux installed
+
 xinput set-prop "Elan Touchpad" "Synaptics Finger" 5 10 50
 synclient VertScrollDelta=-120
 synclient HorizScrollDelta=-120

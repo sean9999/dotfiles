@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#   aliases for frequently-invoked commands
+#   helpful for reducing keystrokes and congnitive load
+#   season to taste
+
 alias g='git'
 alias gs='git status'
 alias sis="systemctl --user"
@@ -8,4 +12,3 @@ alias disks='df -h -T -x squashfs'
 alias diskspace=disks
 alias nano=nvim
 alias cat='bat --theme="Monokai Extended Origin" --style=plain --tabs=0'
-

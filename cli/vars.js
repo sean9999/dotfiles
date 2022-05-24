@@ -1,18 +1,17 @@
-"use strict";
+import vars, { get, set, rootDirectory, rootdir } from './config.json';
 
-var vars = require('./config.json');
-vars.get = function(k){
+get = function(k){
 	if (k in vars) {
 		return vars[k];
 	} else {
 		return null;
 	}
 };
-vars.set = function(k,v){
+set = function(k,v){
 	vars[k] = v;
 };
-vars.rootDirectory = function(){
-	return vars.rootdir.replace('~',process.env.HOME);
+rootDirectory = function(){
+	return rootdir.replace('~',process.env.HOME);
 };
 
-module.exports = vars;
+export default vars;

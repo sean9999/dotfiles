@@ -7,7 +7,7 @@
     "test": "grunt test cli/test"
   },
   "bin": {
-    "dotfiles": "cli.sh"
+    "eotfiles": "cli.sh"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,10 @@
   "homepage": "https://gitlab.com/code_monk/dotfiles#readme",
   "dependencies": {
     "bash-color": "0.0.3",
+    "chalk": "^5.0.1",
     "columnizer": "~0.1.0"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0"
   }
 }

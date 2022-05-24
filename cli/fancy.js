@@ -1,36 +1,22 @@
 "use strict";
 
-var	colour = require('bash-color'),
-	playsound = require('./playsound.js');
+import chalk from "chalk";
+import config from "./config.json";
+import playsound from "./playsound";
 
-module.exports = function(msg,type,config){
+export default (msg, type, thisConfig) => {
 	var fancyOutput;
-	config = config || {
-		"error": {
-			"char": "❗",
-			"colour": "red",
-			"sound": "bad"
-		},
-		"success": {
-			"char": "✅",
-			"colour": "green",
-			"sound": "good"
-		},
-		"default": {
-			"char": "◱",
-			"colour": false,
-			"sound": "neutral"
-		}
-	};
+	thisConfig = thisConfig || config.message;
 	type = type || 'default';
-	if (! (type in config) ) {
+	if (! (type in thisConfig) ) {
 		type = 'default';
 	}
-	if (config[type].colour) {
-		fancyOutput = colour[ config[type].colour ]( config[type].char + '  ' + msg );
+	if (thisConfig[type].colour) {
+		let colour = chalk[thisConfig[type].colour];
+		fancyOutput = colour( thisConfig[type].char + '  ' + msg );
 	} else {
-		fancyOutput = config[type].char + '  ' + msg;
+		fancyOutput = thisConfig[type].char + '  ' + msg;
 	}
-	playsound( config[type].sound );
+	playsound( thisConfig[type].sound );
 	return fancyOutput;
 };
