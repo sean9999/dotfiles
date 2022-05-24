@@ -1,44 +1,43 @@
-"use strict";
-
 /**
  * play a sound in a detached process, but fail silently if you can't
  * completely ignores stout and stderr
  * @returns { nothing } undefined
  */
 
+import vars from "./vars.js";
 import { spawn } from 'child_process';
 
-const CLIP_ROOT = __dirname + '/assets/';
+const CLIP_ROOT = vars.dirname + '/assets/';
 
-var darwinParams = function(clip_path) {
+var darwinParams = function (clip_path) {
 	var command = '/usr/bin/env';
-	var args = ['afplay','-v','0.2',clip_path + '.wav'];
+	var args = ['afplay', '-v', '0.2', clip_path + '.wav'];
 	var options = {
-		stdio: ['ignore','ignore','ignore'],
+		stdio: ['ignore', 'ignore', 'ignore'],
 		detached: true
 	};
 	var r = {};
 	r.command = command;
-	r.args  = args;
+	r.args = args;
 	r.options = options;
 	return r;
 };
 
-var ubuntuParams = function(clip_path) {
+var ubuntuParams = function (clip_path) {
 	var command = '/usr/bin/env';
-	var args = ['aplay',clip_path + '.wav'];
+	var args = ['aplay', clip_path + '.wav'];
 	var options = {
-		stdio: ['ignore','ignore','ignore'],
+		stdio: ['ignore', 'ignore', 'ignore'],
 		detached: true
 	};
 	var r = {};
 	r.command = command;
-	r.args  = args;
+	r.args = args;
 	r.options = options;
 	return r;
 };
 
-var windowsParams = function(clip_path) {
+var windowsParams = function (clip_path) {
 
 	/*
 	var windoze_script = '
@@ -59,18 +58,18 @@ var windowsParams = function(clip_path) {
 
 };
 
-var playsound = function(clipname){
+var playsound = function (clipname) {
 	var clip_path = CLIP_ROOT + clipname;
 	var params = {};
 	switch (process.platform) {
 		case 'linux':
-		params = ubuntuParams(clip_path);
-		break;
+			params = ubuntuParams(clip_path);
+			break;
 		default:
-		params = darwinParams(clip_path);
-		break;
+			params = darwinParams(clip_path);
+			break;
 	}
-	var clip = spawn(params.command,params.args,params.options);
+	var clip = spawn(params.command, params.args, params.options);
 	clip.unref();
 	return;
 };

@@ -1,7 +1,6 @@
-{
+const config = {
 	"rootdir": "~/.dotfiles",
 	"helpRoot": "/cli/assets",
-	"ignorefiles": [".DS_Store","Caveats"],
 	"message": {
 		"error": {
 			"char": "❗",
@@ -19,4 +18,6 @@
 			"sound": "neutral.mp3"
 		}
 	}
-}
+};
+
+export default config;

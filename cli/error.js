@@ -1,11 +1,10 @@
-"use strict";
-
 import playsound from './playsound.js';
-import vars from "./vars";
-import fancy from "./fancy";
+import vars from "./vars.js";
+import fancy from "./fancy.js";
 
 class CLIError extends Error {
 	constructor(err) {
+		super(err);
 		this.name = 'Dotfiles CLI Error';
 		const message = err.message || this.name;
 		this.message = fancy(message, 'error', vars.message);
@@ -13,7 +12,6 @@ class CLIError extends Error {
 		console.error(this.message);
 	}
 }
-CLIError.prototype = Object.create(Error.prototype);
 
 
 export default CLIError;

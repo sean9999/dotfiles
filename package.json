@@ -2,7 +2,7 @@
   "name": "@code_monk/dotfiles",
   "version": "1.0.3",
   "description": "a dotfile manager",
-  "main": "cli/main.js",
+  "type": "module",
   "scripts": {
     "test": "grunt test cli/test"
   },
@@ -28,7 +28,7 @@
   "homepage": "https://gitlab.com/code_monk/dotfiles#readme",
   "dependencies": {
     "bash-color": "0.0.3",
-    "chalk": "^5.0.1",
+    "chalk": "^4.1.2",
     "columnizer": "~0.1.0"
   },
   "devDependencies": {

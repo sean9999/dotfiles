@@ -15,23 +15,23 @@
 
 import { access, R_OK } from 'fs';
 //  remove zero-length args
-var args = process.argv.slice(2).filter(function(arg){
+var args = process.argv.slice(2).filter(function (arg) {
     return (arg);
 });
 
-;(function(args){
+; (function (args) {
     "use strict";
-    var good = function(stuff){
+    var good = function (stuff) {
         process.stdout.write(stuff.trim());
     };
-    var bad = function(stuff){
+    var bad = function (stuff) {
         console.trace(stuff);
     };
-    var meh = function(msg){
+    var meh = function (msg) {
         //console.warn(msg);
     };
-    var sanityCheck = function(){
-        return new Promise(function(resolve,reject){
+    var sanityCheck = function () {
+        return new Promise(function (resolve, reject) {
             if (args.length < 2) {
                 reject(Error('too few args'));
             }
@@ -39,15 +39,15 @@ var args = process.argv.slice(2).filter(function(arg){
                 reject(Error('Too many args'));
             }
             if (args.length === 3) {
-                if ( parseInt(args[2]).toString() !== args[2] ) {
+                if (parseInt(args[2]).toString() !== args[2]) {
                     reject(Error('position argument was not an integer'));
                 }
             }
             resolve(args);
         });
     };
-    var args2Scope = function(args){
-        return new Promise(function(resolve,reject){
+    var args2Scope = function (args) {
+        return new Promise(function (resolve, reject) {
             var bigPath = args[0].split(':');
             var newDir = args[1];
             var position = bigPath.length;
@@ -55,7 +55,7 @@ var args = process.argv.slice(2).filter(function(arg){
             if (2 in args) {
                 position = Number.parseInt(args[2]);
                 wantPosition = true;
-                position = Math.min(position,bigPath.length);
+                position = Math.min(position, bigPath.length);
             }
             var newDirIsAlreadyInPath = (bigPath.indexOf(newDir) > -1);
             var scope = {
@@ -68,9 +68,9 @@ var args = process.argv.slice(2).filter(function(arg){
             resolve(scope);
         });
     };
-    var dirExists = function(dir) {
-        return new Promise(function(resolve,reject) {
-            access(dir,R_OK,function(err) {
+    var dirExists = function (dir) {
+        return new Promise(function (resolve, reject) {
+            access(dir, R_OK, function (err) {
                 if (err) {
                     resolve(false);
                 } else {
@@ -79,37 +79,37 @@ var args = process.argv.slice(2).filter(function(arg){
             });
         });
     };
-    var removeDirtyDirs = function(scope) {
-        return Promise.all( scope.bigPath.map(dirExists) ).then(function(cleanDirs){
-            scope.bigPath = cleanDirs.filter(function(dir){
+    var removeDirtyDirs = function (scope) {
+        return Promise.all(scope.bigPath.map(dirExists)).then(function (cleanDirs) {
+            scope.bigPath = cleanDirs.filter(function (dir) {
                 return (dir);
             });
             return scope;
         });
     };
-    var removeDuplicates = function(scope) {
-        return new Promise(function(resolve,reject){
-            var deduped = scope.bigPath.filter(function(dir,pos,arr){
-                return ( pos === arr.lastIndexOf(dir) );
+    var removeDuplicates = function (scope) {
+        return new Promise(function (resolve, reject) {
+            var deduped = scope.bigPath.filter(function (dir, pos, arr) {
+                return (pos === arr.lastIndexOf(dir));
             });
             scope.bigPath = deduped;
             resolve(scope);
         });
     };
-    var serialize = function(scope){
-        return Promise.resolve( scope.bigPath.join(':') );
+    var serialize = function (scope) {
+        return Promise.resolve(scope.bigPath.join(':'));
     };
-    var add2Path = function(scope){
-        return new Promise(function(resolve,reject){
+    var add2Path = function (scope) {
+        return new Promise(function (resolve, reject) {
             if (scope.wantPosition) {
-                if ( scope.newDirIsAlreadyInPath && scope.position !== scope.bigPath.indexOf(scope.newDir)) {
-                    scope.bigPath = scope.bigPath.filter(function(dir){
+                if (scope.newDirIsAlreadyInPath && scope.position !== scope.bigPath.indexOf(scope.newDir)) {
+                    scope.bigPath = scope.bigPath.filter(function (dir) {
                         return (dir !== scope.newDir);
                     });
                 }
-                scope.bigPath.splice(scope.position,null,scope.newDir);
+                scope.bigPath.splice(scope.position, null, scope.newDir);
             } else {
-                if ( scope.newDirIsAlreadyInPath ) {
+                if (scope.newDirIsAlreadyInPath) {
                     meh('The directory is already in $PATH. Doing nothing');
                 } else {
                     scope.bigPath[scope.position] = scope.newDir;

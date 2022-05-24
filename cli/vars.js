@@ -1,17 +1,12 @@
-import vars, { get, set, rootDirectory, rootdir } from './config.json';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import config from './config.js';
 
-get = function(k){
-	if (k in vars) {
-		return vars[k];
-	} else {
-		return null;
-	}
-};
-set = function(k,v){
-	vars[k] = v;
-};
-rootDirectory = function(){
-	return rootdir.replace('~',process.env.HOME);
-};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const vars = Object.create(config);
+
+vars.__dirname = __dirname;
 
 export default vars;
