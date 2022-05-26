@@ -6,7 +6,7 @@ mkdir -p $DOTFILES_DIR
 touch $RCFILE
 
 ##  add symlinks so we have a nice well-know and clean entrypoint
-ln -nfs $PWD $DOTFILES_DIR
+ln -bfs $PWD $DOTFILES_DIR
 #   add source command to .bashrc
 sed -i '/^#.dotfiles/,/^$/d' $RCFILE
 echo '#	dotfiles' >> $RCFILE
