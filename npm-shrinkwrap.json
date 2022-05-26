@@ -1,12 +1,12 @@
 {
 	"name": "@code_monk/dotfiles",
-	"version": "2.0.0",
+	"version": "2.0.3",
 	"lockfileVersion": 2,
 	"requires": true,
 	"packages": {
 		"": {
 			"name": "@code_monk/dotfiles",
-			"version": "2.0.0",
+			"version": "2.0.3",
 			"hasInstallScript": true,
 			"license": "ISC",
 			"dependencies": {
@@ -14,7 +14,7 @@
 				"columnizer": "~0.1.0"
 			},
 			"bin": {
-				"eotfiles": "cli.sh"
+				"dotfiles": "cli.sh"
 			},
 			"engines": {
 				"node": ">=13.2.0"
