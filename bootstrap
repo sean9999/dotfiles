@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source vars.sh
-
-for file in $DOTFILES_DIR/enabled/*; do
+for file in ~/.dotfiles/enabled/*; do
 	[ -r "$file" ] && source "$file"
 done
