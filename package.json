@@ -1,6 +1,6 @@
 {
 	"name": "@code_monk/dotfiles",
-	"version": "2.0.4",
+	"version": "2.0.5",
 	"description": "a dotfile manager",
 	"type": "module",
 	"publishConfig": {
